@@ -1,0 +1,86 @@
+
+odbcad32        3754-26a8	ENTER SQLAllocHandle 
+		SQLSMALLINT                  1 <SQL_HANDLE_ENV>
+		SQLHANDLE           0x0000000000000000
+		SQLHANDLE *         0x000000AD8F7D3188
+
+odbcad32        3754-26a8	EXIT  SQLAllocHandle  with return code 0 (SQL_SUCCESS)
+		SQLSMALLINT                  1 <SQL_HANDLE_ENV>
+		SQLHANDLE           0x0000000000000000
+		SQLHANDLE *         0x000000AD8F7D3188 ( 0x000002474B1431B0)
+
+odbcad32        3754-26a8	ENTER SQLSetEnvAttr 
+		SQLHENV             0x000002474B1431B0
+		SQLINTEGER                 200 <SQL_ATTR_ODBC_VERSION>
+		SQLPOINTER                 3 <SQL_OV_ODBC3>
+		SQLINTEGER                   0 
+
+odbcad32        3754-26a8	EXIT  SQLSetEnvAttr  with return code 0 (SQL_SUCCESS)
+		SQLHENV             0x000002474B1431B0
+		SQLINTEGER                 200 <SQL_ATTR_ODBC_VERSION>
+		SQLPOINTER                 3 <SQL_OV_ODBC3>
+		SQLINTEGER                   0 
+
+odbcad32        3754-26a8	ENTER SQLAllocHandle 
+		SQLSMALLINT                  2 <SQL_HANDLE_DBC>
+		SQLHANDLE           0x000002474B1431B0
+		SQLHANDLE *         0x000000AD8F7D3170
+
+odbcad32        3754-26a8	EXIT  SQLAllocHandle  with return code 0 (SQL_SUCCESS)
+		SQLSMALLINT                  2 <SQL_HANDLE_DBC>
+		SQLHANDLE           0x000002474B1431B0
+		SQLHANDLE *         0x000000AD8F7D3170 ( 0x000002474B146CC0)
+
+odbcad32        3754-26a8	ENTER SQLSetConnectAttr 
+		SQLHDBC             0x000002474B146CC0
+		SQLINTEGER                 103 <SQL_ATTR_LOGIN_TIMEOUT>
+		SQLPOINTER                10
+		SQLINTEGER                   0 
+
+odbcad32        3754-26a8	EXIT  SQLSetConnectAttr  with return code 0 (SQL_SUCCESS)
+		SQLHDBC             0x000002474B146CC0
+		SQLINTEGER                 103 <SQL_ATTR_LOGIN_TIMEOUT>
+		SQLPOINTER                10
+		SQLINTEGER                   0 
+
+odbcad32        3754-26a8	ENTER SQLDriverConnectW 
+		HDBC                0x000002474B146CC0
+		HWND                0x0000000000000000
+		WCHAR *             0x00007FFC4562C3D0 [      -3] "******\ 0"
+		SWORD                       -3 
+		WCHAR *             0x00007FFC4562C3D0 
+		SWORD                       -3 
+		SWORD *             0x0000000000000000
+		UWORD                        0 <SQL_DRIVER_NOPROMPT>
+
+odbcad32        3754-26a8	EXIT  SQLDriverConnectW  with return code 0 (SQL_SUCCESS)
+		HDBC                0x000002474B146CC0
+		HWND                0x0000000000000000
+		WCHAR *             0x00007FFC4562C3D0 [      -3] "******\ 0"
+		SWORD                       -3 
+		WCHAR *             0x00007FFC4562C3D0 <Invalid buffer length!> [-3]
+		SWORD                       -3 
+		SWORD *             0x0000000000000000
+		UWORD                        0 <SQL_DRIVER_NOPROMPT>
+
+odbcad32        3754-26a8	ENTER SQLDisconnect 
+		HDBC                0x000002474B146CC0
+
+odbcad32        3754-26a8	EXIT  SQLDisconnect  with return code 0 (SQL_SUCCESS)
+		HDBC                0x000002474B146CC0
+
+odbcad32        3754-26a8	ENTER SQLFreeHandle 
+		SQLSMALLINT                  2 <SQL_HANDLE_DBC>
+		SQLHANDLE           0x000002474B146CC0
+
+odbcad32        3754-26a8	EXIT  SQLFreeHandle  with return code 0 (SQL_SUCCESS)
+		SQLSMALLINT                  2 <SQL_HANDLE_DBC>
+		SQLHANDLE           0x000002474B146CC0
+
+odbcad32        3754-26a8	ENTER SQLFreeHandle 
+		SQLSMALLINT                  1 <SQL_HANDLE_ENV>
+		SQLHANDLE           0x000002474B1431B0
+
+odbcad32        3754-26a8	EXIT  SQLFreeHandle  with return code 0 (SQL_SUCCESS)
+		SQLSMALLINT                  1 <SQL_HANDLE_ENV>
+		SQLHANDLE           0x000002474B1431B0
