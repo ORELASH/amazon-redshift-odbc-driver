@@ -1,0 +1,723 @@
+[WARN] 2026-02-04 15:04:24.202 [RSLOG:rslog.cpp:178] [14164] 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+****************************************************************************************************************************************
+*                                                                                                                                      *
+*  Log level (6) is enabled!                                                                                                           *
+*  WARNING: Log level Debug (level 5) or higher captures ALL data which may include sensitive information.                             *
+*                                                                                                                                      *
+*  IMPORTANT: Before sharing logs with support or any third party, ensure all sensitive information is redacted/removed from the logs  *
+****************************************************************************************************************************************
+
+[INFO] 2026-02-04 15:04:24.202 [RSVER:rsversion.cpp:59] [14164] ODBC-2.1.13.0
+[INFO] 2026-02-04 15:04:24.202 [RSVER:rsversion.cpp:61] [14164] aws-sdk-cpp-1.11.724
+[INFO] 2026-02-04 15:04:24.202 [RSVER:rsversion.cpp:61] [14164] c-ares-1.34.6
+[INFO] 2026-02-04 15:04:24.202 [RSVER:rsversion.cpp:61] [14164] openssl-OpenSSL 3.6.1 27 Jan 2026
+[DEBUG] 2026-02-04 15:04:24.202 [ODBCDLL:dllmain.c:42] [14164] [pid:5804] DLL_PROCESS_ATTACH
+[DEBUG] 2026-02-04 15:04:24.202 [ODBCDLL:dllmain.c:50] [2476] [pid:5804] DLL_THREAD_ATTACH
+[DEBUG] 2026-02-04 15:04:24.203 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLAllocHandle(
+	hHandleType=SQL_HANDLE_ENV
+	pInputHandle=NULL
+	ppOutputHandle=0x000002987526BFB8
+	 )
+
+[DEBUG] 2026-02-04 15:04:24.203 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLAllocEnv(
+	pphenv=0x000002987526BFB8
+	 )
+
+[DEBUG] 2026-02-04 15:04:24.203 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLAllocEnv() return SQL_SUCCESS
+	*pphenv=0x00000298760C7230
+
+[DEBUG] 2026-02-04 15:04:24.203 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLAllocHandle() return SQL_SUCCESS
+	*ppOutputHandle=0x00000298760C7230
+
+[DEBUG] 2026-02-04 15:04:24.203 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLSetEnvAttr(
+	phenv=0x00000298760C7230
+	iAttribute=SQL_ATTR_ODBC_VERSION
+	pValue=0x3
+	cbLen=0
+	 )
+
+[DEBUG] 2026-02-04 15:04:24.203 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLSetEnvAttr() return SQL_SUCCESS
+
+[DEBUG] 2026-02-04 15:04:24.203 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLAllocHandle(
+	hHandleType=SQL_HANDLE_DBC
+	pInputHandle=0x00000298760C7230
+	ppOutputHandle=0x000002987526BF90
+	 )
+
+[DEBUG] 2026-02-04 15:04:24.203 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLAllocHandle() return SQL_SUCCESS
+	*ppOutputHandle=0x00000298729FB710
+
+[DEBUG] 2026-02-04 15:04:24.203 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetInfoW(
+	phdbc=0x00000298729FB710
+	hInfoType=SQL_DRIVER_ODBC_VER
+	pwInfoValue=0x000000C1494716D0
+	cbLen=12
+	pcbLen=0x000000C1494716A0
+	 )
+
+[DEBUG] 2026-02-04 15:04:24.203 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetInfoW() return SQL_SUCCESS
+	*pcbLen=10
+	*pwInfoValue=03.52
+
+[DEBUG] 2026-02-04 15:04:24.204 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLSetConnectAttrW(
+	phdbc=0x00000298729FB710
+	iAttribute=SQL_ATTR_ANSI_APP
+	pwValue=0x1
+	cbLen=-5
+	 )
+
+[DEBUG] 2026-02-04 15:04:24.204 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLSetConnectAttrW() return SQL_ERROR
+
+[DEBUG] 2026-02-04 15:04:24.204 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetInfoW(
+	phdbc=0x00000298729FB710
+	hInfoType=SQL_ACTIVE_STATEMENTS
+	pwInfoValue=0x000000C1494716B8
+	cbLen=2
+	pcbLen=NULL
+	 )
+
+[DEBUG] 2026-02-04 15:04:24.204 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetInfoW() return SQL_SUCCESS
+	*pInfoValue=1
+
+[DEBUG] 2026-02-04 15:04:24.204 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLSetConnectAttrW(
+	phdbc=0x00000298729FB710
+	iAttribute=SQL_ATTR_LOGIN_TIMEOUT
+	pwValue=0xa
+	cbLen=0
+	 )
+
+[DEBUG] 2026-02-04 15:04:24.204 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLSetConnectAttrW() return SQL_SUCCESS
+
+[DEBUG] 2026-02-04 15:04:24.204 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLDriverConnectW(
+	phdbc=0x00000298729FB710
+	hwnd=NULL
+	wszConnStrIn=AuthType=Plugin;AutoCreate=0;client_id=acbc9678-ca74-4637-a690-dbf3e2159b5e;Compression=OFF;CR=0;CRC=0;CRD=3;CscEnable=0;CscMaxFileSize=4096;CscThreshold=1;DatabaseMetadataCurrentDbOnly=1;DB=dev;DRIVER=Amazon Redshift ODBC Driver (x64);EM=3;FG=0;FM=0;ForceLowercase=0;FP=0;FRC=1;FTSWTZAT=0;FTWFSAT=0;group_federation=0;HOST=da-rs-01-p.data.leumi-aws.prd;https_proxy_host=campusbc;https_proxy_password=Al5636533;https_proxy_port=8080;https_proxy_username=utsdm77;IAM=1;idp_tenant=acc3e033-ba9a-4661-b2b3-2e76638d43c8;idp_use_https_proxy=1;InstanceProfile=0;LB=0;LBT=0;LT=0;Min_TLS=1.2;MNPS=0;MultiInsertCmdConvertEnable=1;MXPS=100;plugin_name=BrowserAzureADOAuth2;POOL=0;PORT=5439;QT=0;RCCE=0;ReadOnly=0;scope=api://acbc9678-ca74-4637-a690-dbf3e2159b5e/jdbc_login;SCR=100;Serverless=1;SSLMode=require;ssl_insecure=0;TEB=1;TLS=2;token=;web_identity_token=;Workgroup=bll-dataanalyst-redshift-01-r;XDT=-10;
+	cchConnStrIn=SQL_NTS
+	wszConnStrOut=0x0000029875264E90
+	cchConnStrOut=8192
+	pcchConnStrOut=0x000000C1494731F8
+	hDriverCompletion=SQL_DRIVER_NOPROMPT
+	 )
+
+[INFO] 2026-02-04 15:04:24.204 [RSCNN:rsconnect.cpp:2413] [14164] Compression is set to: OFF
+[DEBUG] 2026-02-04 15:04:24.217 [IAMHLP:RsIamHelper.cpp:303] [14164] [pid:5804] RsIamHelper::SetIamSettings
+[DEBUG] 2026-02-04 15:04:24.217 [IAMHLP:RsIamHelper.cpp:391] [14164] [pid:5804] Code flow for nlb serverless cluster
+[DEBUG] 2026-02-04 15:04:24.217 [IAMHLP:RsIamHelper.cpp:427] [14164] [pid:5804] Cluster Identifier:
+[DEBUG] 2026-02-04 15:04:24.218 [IAMCLNT:RsIamClient.cpp:66] [14164] [pid:5804] RsIamClient::RsIamClient
+[DEBUG] 2026-02-04 15:04:24.222 [ODBCDLL:dllmain.c:50] [2056] [pid:5804] DLL_THREAD_ATTACH
+[DEBUG] 2026-02-04 15:04:24.222 [ODBCDLL:dllmain.c:50] [24756] [pid:5804] DLL_THREAD_ATTACH
+[DEBUG] 2026-02-04 15:04:24.239 [ODBCDLL:dllmain.c:50] [4600] [pid:5804] DLL_THREAD_ATTACH
+[DEBUG] 2026-02-04 15:04:24.239 [IAMHLP:RsIamHelper.cpp:87] [14164] [pid:5804] RsIamHelper::NativePluginAuthentication not from cache
+[DEBUG] 2026-02-04 15:04:24.239 [IAMCLNT:RsIamClient.cpp:112] [14164] [pid:5804] RsIamClient::Connect
+[DEBUG] 2026-02-04 15:04:24.239 [IAMCLNT:RsIamClient.cpp:898] [14164] [pid:5804] RsIamClient::ValidateConnectionAttributes
+[DEBUG] 2026-02-04 15:04:24.239 [IAMCLNT:RsIamClient.cpp:119] [14164] [pid:5804] RsIamClient::Connect IAM AuthType: Plugin
+[DEBUG] 2026-02-04 15:04:24.239 [IAMFactory:IAMFactory.cpp:144] [14164] [pid:5804] CreatePluginCredentialsProvider
+[DEBUG] 2026-02-04 15:04:24.239 [IAM:IAMPluginFactory.cpp:12] [14164] [pid:5804] IAMPluginFactory::CreatePlugin
+[DEBUG] 2026-02-04 15:04:24.239 [IAM:IAMPluginFactory.cpp:106] [14164] [pid:5804] IAMPluginFactory::CreateBrowserAzureOAuth2Plugin
+[DEBUG] 2026-02-04 15:04:24.239 [IAM:IAMCredentialsProvider.cpp:16] [14164] [pid:5804] IAMCredentialsProvider::IAMCredentialsProvider
+[DEBUG] 2026-02-04 15:04:24.239 [IAM:IAMPluginCredentialsProvider.cpp:46] [14164] [pid:5804] IAMPluginCredentialsProvider::IAMPluginCredentialsProvider
+[DEBUG] 2026-02-04 15:04:24.239 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:47] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::IAMBrowserAzureOAuth2CredentialsProvider
+[DEBUG] 2026-02-04 15:04:24.239 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:54] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::InitArgumentsMap
+[DEBUG] 2026-02-04 15:04:24.239 [IAM:IAMPluginCredentialsProvider.cpp:52] [14164] [pid:5804] IAMPluginCredentialsProvider::InitArgumentsMap
+[DEBUG] 2026-02-04 15:04:24.239 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:70] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::ValidateArgumentsMap
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:92] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GetJwtAssertion
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:501] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::BrowserOauthBasedAuthentication
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:290] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::RequestAuthorizationCode
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:114] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateState
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:102] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::GenerateLength
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:302] [14164] [pid:5804] RequestAuthorizationCode: Launching WEB server
+[DEBUG] 2026-02-04 15:04:24.240 [IAM:WEBServer.h:117] [14164] [pid:5804] WEBServer::LaunchServer
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:307] [14164] [pid:5804] RequestAuthorizationCode: Waiting for server to be ready
+[DEBUG] 2026-02-04 15:04:24.240 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:272] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::WaitForServer
+[DEBUG] 2026-02-04 15:04:24.240 [IAM:WEBServer.h:162] [14164] [pid:5804] WEBServer::IsListening
+[DEBUG] 2026-02-04 15:04:24.240 [ODBCDLL:dllmain.c:50] [24336] [pid:5804] DLL_THREAD_ATTACH
+[DEBUG] 2026-02-04 15:04:24.241 [ODBCDLL:dllmain.c:50] [17948] [pid:5804] DLL_THREAD_ATTACH
+[DEBUG] 2026-02-04 15:04:24.241 [IAMHTTP:WEBServer.cpp:101] [17948] [pid:5804] WEBServer::ListenerThread - Starting, timeout: 120 seconds
+[DEBUG] 2026-02-04 15:04:24.241 [IAMHTTP:WEBServer.cpp:15] [17948] [pid:5804] WEBServer::WEBServerInit
+[DEBUG] 2026-02-04 15:04:24.241 [IAMHTTP:Socket.cpp:53] [17948] [pid:5804] Socket::PrepareListenSocket
+[DEBUG] 2026-02-04 15:04:24.241 [IAMHTTP:AddrInformation.cpp:10] [17948] [pid:5804] AddrInformation::AddrInformation
+[DEBUG] 2026-02-04 15:04:24.247 [IAM:Socket.h:238] [17948] [pid:5804] Socket::SetReusable
+[DEBUG] 2026-02-04 15:04:24.247 [IAM:Socket.h:193] [17948] [pid:5804] Socket::Bind
+[DEBUG] 2026-02-04 15:04:24.247 [IAM:Socket.h:151] [17948] [pid:5804] Socket::SetNonBlocking
+[DEBUG] 2026-02-04 15:04:24.247 [IAM:Socket.h:219] [17948] [pid:5804] Socket::Listen
+[DEBUG] 2026-02-04 15:04:24.247 [IAM:AddrInformation.h:66] [17948] [pid:5804] AddrInformation::~AddrInformation
+[DEBUG] 2026-02-04 15:04:24.247 [IAM:Socket.h:177] [17948] [pid:5804] Socket::Register
+[DEBUG] 2026-02-04 15:04:24.247 [IAMHTTP:Selector.cpp:6] [17948] [pid:5804] Selector::Register
+[DEBUG] 2026-02-04 15:04:24.247 [IAM:Socket.h:201] [17948] [pid:5804] Socket::GetListenPort
+[DEBUG] 2026-02-04 15:04:24.247 [IAM:Socket.h:211] [17948] [pid:5804] Socket::GetListenPort 62925
+[DEBUG] 2026-02-04 15:04:24.247 [IAMHTTP:WEBServer.cpp:109] [17948] [pid:5804] WEBServer::ListenerThread - Server initialized successfully, listening on port: 62925
+[DEBUG] 2026-02-04 15:04:24.247 [IAMHTTP:WEBServer.cpp:115] [17948] [pid:5804] WEBServer::ListenerThread - Entering listening loop
+[DEBUG] 2026-02-04 15:04:24.247 [IAM:Parser.h:122] [17948] [pid:5804] Parser.IsFinished
+[DEBUG] 2026-02-04 15:04:24.247 [IAM:Parser.h:122] [17948] [pid:5804] Parser.IsFinished
+[DEBUG] 2026-02-04 15:04:24.247 [IAMHTTP:WEBServer.cpp:126] [17948] [pid:5804] WEBServer::ListenerThread - Loop #1, elapsed: 0 sec, parser finished: 0
+[DEBUG] 2026-02-04 15:04:24.247 [IAMHTTP:WEBServer.cpp:87] [17948] [pid:5804] WEBServer::Listen
+[DEBUG] 2026-02-04 15:04:24.247 [IAMHTTP:Selector.cpp:33] [17948] [pid:5804] Selector::Select
+[DEBUG] 2026-02-04 15:04:24.350 [IAM:WEBServer.h:162] [14164] [pid:5804] WEBServer::IsListening
+[DEBUG] 2026-02-04 15:04:24.350 [IAM:WEBServer.h:162] [14164] [pid:5804] WEBServer::IsListening
+[DEBUG] 2026-02-04 15:04:24.350 [IAM:WEBServer.h:146] [14164] [pid:5804] WEBServer::GetListenPort
+[DEBUG] 2026-02-04 15:04:24.350 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:314] [14164] [pid:5804] RequestAuthorizationCode: Server is listening on port: 62925
+[DEBUG] 2026-02-04 15:04:24.350 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:321] [14164] [pid:5804] RequestAuthorizationCode: Added 'openid' to scope
+[DEBUG] 2026-02-04 15:04:24.350 [IAM:IAMUtils.cpp:662] [14164] [pid:5804] Selected Microsoft IdP host: https://login.microsoftonline.com for partition: '' (processed as '')
+[DEBUG] 2026-02-04 15:04:24.350 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:334] [14164] [pid:5804] RequestAuthorizationCode: redirect_uri (unencoded): http://localhost:62925/redshift/
+[DEBUG] 2026-02-04 15:04:24.350 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:346] [14164] [pid:5804] RequestAuthorizationCode: Full authorization URI: https://login.microsoftonline.com/acc3e033-ba9a-4661-b2b3-2e76638d43c8/oauth2/v2.0/authorize?client_id=acbc9678-ca74-4637-a690-dbf3e2159b5e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A62925%2Fredshift%2F&response_mode=form_post&scope=openid%20api://acbc9678-ca74-4637-a690-dbf3e2159b5e/jdbc_login&state=du77ted9c4dlvnpqlt58g53tkf1j2l8
+[DEBUG] 2026-02-04 15:04:24.350 [IAM:IAMUtils.cpp:633] [14164] [pid:5804] IAMUtils::ValidateURL uri=https://login.microsoftonline.com/acc3e033-ba9a-4661-b2b3-2e76638d43c8/oauth2/v2.0/authorize?client_id=acbc9678-ca74-4637-a690-dbf3e2159b5e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A62925%2Fredshift%2F&response_mode=form_post&scope=openid%20api://acbc9678-ca74-4637-a690-dbf3e2159b5e/jdbc_login&state=du77ted9c4dlvnpqlt58g53tkf1j2l8
+[DEBUG] 2026-02-04 15:04:24.350 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:351] [14164] [pid:5804] RequestAuthorizationCode: Launching browser with authorization URI
+[DEBUG] 2026-02-04 15:04:24.350 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:136] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::LaunchBrowser: https://login.microsoftonline.com/acc3e033-ba9a-4661-b2b3-2e76638d43c8/oauth2/v2.0/authorize?client_id=acbc9678-ca74-4637-a690-dbf3e2159b5e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A62925%2Fredshift%2F&response_mode=form_post&scope=openid%20api://acbc9678-ca74-4637-a690-dbf3e2159b5e/jdbc_login&state=du77ted9c4dlvnpqlt58g53tkf1j2l8
+[DEBUG] 2026-02-04 15:04:24.350 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:152] [14164] [pid:5804] Using default proxy bypass list: localhost;127.0.0.1
+[DEBUG] 2026-02-04 15:04:24.350 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:155] [14164] [pid:5804] Attempting to launch browser with proxy bypass
+[DEBUG] 2026-02-04 15:04:24.351 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:181] [14164] [pid:5804] Launching browser: "C:\Program Files\Google\Chrome\Application\chrome.exe" --proxy-bypass-list="localhost;127.0.0.1" "https://login.microsoftonline.com/acc3e033-ba9a-4661-b2b3-2e76638d43c8/oauth2/v2.0/authorize?client_id=acbc9678-ca74-4637-a690-dbf3e2159b5e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A62925%2Fredshift%2F&response_mode=form_post&scope=openid%20api://acbc9678-ca74-4637-a690-dbf3e2159b5e/jdbc_login&state=du77ted9c4dlvnpqlt58g53tkf1j2l8"
+[DEBUG] 2026-02-04 15:04:24.413 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:200] [14164] [pid:5804] Browser launched successfully with proxy bypass
+[DEBUG] 2026-02-04 15:04:24.413 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:361] [14164] [pid:5804] RequestAuthorizationCode: Waiting for server to complete (srv.Join())
+[DEBUG] 2026-02-04 15:04:24.413 [IAM:WEBServer.h:127] [14164] [pid:5804] WEBServer::Join
+[DEBUG] 2026-02-04 15:04:25.250 [IAM:Parser.h:122] [17948] [pid:5804] Parser.IsFinished
+[DEBUG] 2026-02-04 15:04:25.250 [IAM:Parser.h:122] [17948] [pid:5804] Parser.IsFinished
+[DEBUG] 2026-02-04 15:04:25.250 [IAMHTTP:WEBServer.cpp:87] [17948] [pid:5804] WEBServer::Listen
+[DEBUG] 2026-02-04 15:04:25.250 [IAMHTTP:Selector.cpp:33] [17948] [pid:5804] Selector::Select
+[DEBUG] 2026-02-04 15:04:26.208 [IAMHTTP:WEBServer.cpp:37] [17948] [pid:5804] WEBServer::HandleConnection - Starting
+[DEBUG] 2026-02-04 15:04:26.208 [IAM:Socket.h:227] [17948] [pid:5804] Socket::Accept
+[DEBUG] 2026-02-04 15:04:26.208 [IAMHTTP:WEBServer.cpp:44] [17948] [pid:5804] WEBServer::HandleConnection - Connection accepted, counter: 1
+[DEBUG] 2026-02-04 15:04:26.208 [IAM:Socket.h:151] [17948] [pid:5804] Socket::SetNonBlocking
+[DEBUG] 2026-02-04 15:04:26.208 [IAMHTTP:WEBServer.cpp:48] [17948] [pid:5804] WEBServer::HandleConnection - Socket set to non-blocking, creating stream
+[DEBUG] 2026-02-04 15:04:26.208 [IAMHTTP:WEBServer.cpp:53] [17948] [pid:5804] WEBServer::HandleConnection - Calling parser_.Parse()
+[DEBUG] 2026-02-04 15:04:26.208 [IAMHTTP:Parser.cpp:209] [17948] [pid:5804] Parser::Parse - Starting parse, initial state: 0
+[DEBUG] 2026-02-04 15:04:26.208 [IAMHTTP:Socket.cpp:11] [17948] [pid:5804] Socket::Receive
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 1 received (length=25): [POST /redshift/ HTTP/1.1
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 0, input: [POST /redshift/ HTTP/1.1
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:144] [17948] [pid:5804] Parser::ParsePostRequest - Processing request line
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:13] [17948] [pid:5804] Parser::ParseRequestLine - Input: [POST /redshift/ HTTP/1.1
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:21] [17948] [pid:5804] Parser::ParseRequestLine - Parsed command parts: 3
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:24] [17948] [pid:5804] Parser::ParseRequestLine - command[0]: [POST]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:24] [17948] [pid:5804] Parser::ParseRequestLine - command[1]: [/redshift/]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:24] [17948] [pid:5804] Parser::ParseRequestLine - command[2]: [HTTP/1.1]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:30] [17948] [pid:5804] Parser::ParseRequestLine - Matched POST request, moving to PARSE_HEADER
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 2 received (length=22): [Host: localhost:62925
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Host: localhost:62925
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Host: localhost:62925
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 4, header_size: 22
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Host]: [localhost:62925]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 3 received (length=23): [Connection: keep-alive
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Connection: keep-alive
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Connection: keep-alive
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 10, header_size: 45
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Connection]: [keep-alive]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 4 received (length=21): [Content-Length: 1587
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Content-Length: 1587
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Content-Length: 1587
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 14, header_size: 66
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Content-Length]: [1587]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 5 received (length=25): [Cache-Control: max-age=0
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Cache-Control: max-age=0
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Cache-Control: max-age=0
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 13, header_size: 91
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Cache-Control]: [max-age=0]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 6 received (length=76): [sec-ch-ua: "Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [sec-ch-ua: "Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [sec-ch-ua: "Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 9, header_size: 167
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [sec-ch-ua]: ["GoogleChrome";v="135","Not-A.Brand";v="8","Chromium";v="135"]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 7 received (length=21): [sec-ch-ua-mobile: ?0
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [sec-ch-ua-mobile: ?0
+]
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.241 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [sec-ch-ua-mobile: ?0
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 16, header_size: 188
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [sec-ch-ua-mobile]: [?0]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 8 received (length=30): [sec-ch-ua-platform: "Windows"
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [sec-ch-ua-platform: "Windows"
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [sec-ch-ua-platform: "Windows"
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 18, header_size: 218
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [sec-ch-ua-platform]: ["Windows"]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 9 received (length=13): [Origin: null
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Origin: null
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Origin: null
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 6, header_size: 231
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Origin]: [null]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 10 received (length=48): [Content-Type: application/x-www-form-urlencoded
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Content-Type: application/x-www-form-urlencoded
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Content-Type: application/x-www-form-urlencoded
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 12, header_size: 279
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Content-Type]: [application/x-www-form-urlencoded]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 11 received (length=29): [Upgrade-Insecure-Requests: 1
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Upgrade-Insecure-Requests: 1
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Upgrade-Insecure-Requests: 1
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 25, header_size: 308
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Upgrade-Insecure-Requests]: [1]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 12 received (length=124): [User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 10, header_size: 432
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [User-Agent]: [Mozilla/5.0(WindowsNT10.0;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/135.0.0.0Safari/537.36]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 13 received (length=144): [Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 6, header_size: 576
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Accept]: [text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 14 received (length=27): [Sec-Fetch-Site: cross-site
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Sec-Fetch-Site: cross-site
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Sec-Fetch-Site: cross-site
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 14, header_size: 603
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Sec-Fetch-Site]: [cross-site]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 15 received (length=25): [Sec-Fetch-Mode: navigate
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Sec-Fetch-Mode: navigate
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Sec-Fetch-Mode: navigate
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 14, header_size: 628
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Sec-Fetch-Mode]: [navigate]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 16 received (length=25): [Sec-Fetch-Dest: document
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Sec-Fetch-Dest: document
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Sec-Fetch-Dest: document
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 14, header_size: 653
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Sec-Fetch-Dest]: [document]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 17 received (length=41): [Accept-Encoding: gzip, deflate, br, zstd
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Accept-Encoding: gzip, deflate, br, zstd
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Accept-Encoding: gzip, deflate, br, zstd
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 15, header_size: 694
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Accept-Encoding]: [gzip,deflate,br,zstd]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 18 received (length=32): [Accept-Language: en-US,en;q=0.9
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [Accept-Language: en-US,en;q=0.9
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [Accept-Language: en-US,en;q=0.9
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 15, header_size: 726
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [Accept-Language]: [en-US,en;q=0.9]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 19 received (length=29): [x-aim-plugin-installed: true
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [x-aim-plugin-installed: true
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [x-aim-plugin-installed: true
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:69] [17948] [pid:5804] Parser::ParseHeaderLine - Colon position: 22, header_size: 755
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:83] [17948] [pid:5804] Parser::ParseHeaderLine - Inserting header: [x-aim-plugin-installed]: [true]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 20 received (length=1): [
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 1, input: [
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:152] [17948] [pid:5804] Parser::ParsePostRequest - Processing header line
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:51] [17948] [pid:5804] Parser::ParseHeaderLine - Input: [
+]
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:55] [17948] [pid:5804] Parser::ParseHeaderLine - Found empty line (\r), moving to PARSE_BODY
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:56] [17948] [pid:5804] Parser::ParseHeaderLine - Headers collected: 18
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Origin: null
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   sec-ch-ua: "GoogleChrome";v="135","Not-A.Brand";v="8","Chromium";v="135"
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Host: localhost:62925
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Sec-Fetch-Mode: navigate
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Connection: keep-alive
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   sec-ch-ua-platform: "Windows"
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Cache-Control: max-age=0
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Content-Length: 1587
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   sec-ch-ua-mobile: ?0
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Content-Type: application/x-www-form-urlencoded
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Upgrade-Insecure-Requests: 1
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   User-Agent: Mozilla/5.0(WindowsNT10.0;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/135.0.0.0Safari/537.36
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Sec-Fetch-Site: cross-site
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Sec-Fetch-Dest: document
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Accept-Encoding: gzip,deflate,br,zstd
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   Accept-Language: en-US,en;q=0.9
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:59] [17948] [pid:5804] Parser::ParseHeaderLine -   x-aim-plugin-installed: true
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 2
+[DEBUG] 2026-02-04 15:04:27.242 [IAMHTTP:Socket.cpp:11] [17948] [pid:5804] Socket::Receive
+[DEBUG] 2026-02-04 15:04:28.260 [IAMHTTP:Socket.cpp:11] [17948] [pid:5804] Socket::Receive
+[DEBUG] 2026-02-04 15:04:29.284 [IAMHTTP:Parser.cpp:222] [17948] [pid:5804] Parser::Parse - Line 21 received (length=1587): [code=1.ASUAM-DDrJq6YUaysy52Y41DyHiWvKx0yjdGppDb8-IVm14lAHAlAA.BQABBAIAAAADAOz_BQD0_0V2b1N0c0FydGlmYWN0cwIAAAAAAHRSIMe97MX__5Y9YVLB4lMVNqB-WURZo4b2E8HnovJMe25tRlB6xl1Fn91QayPGukhvUs7H8y7jgtA9pZkByoa4-fTxVL0xaK_njmreajs0jQw-NBTtx6yOEGVjRn0tIJZBG3BIFn63xciU8izOtI2FJG49qnxq7Sa4SrGBYHCDTYd1IkPpdW3tcrovjFm-V1Q98QbSv2VuDa3hfuqXjthMH_30BqQ-jriwsQA251AlLpIzsBMP-bTTzant5G9bWcJ-qe5IfEi0hkCxiYjGWKm8tM1jjBduQ1xaUANQc_DB6u6f2gLiwTz1HJmrNLEft733NWlb4BLg6Ye6qPaJu5O_vUkyZnRhPA4cmqfCjmRlxJ8t2unRmdwUCEGg7V8EQdQnRApQy28ggHaMPXuiV9h8JGzwXgdUm2y3NbMFErCtZtSBIGDOYIz0UF-YGM8bGq0QvWO54Xj_NaFfCIMOKlwBJcQU0knd6ZOe4aL4dvRV2QNQJQPw-wu13laPT11WsljbCUCVwIy4SUBVXY-VUOWfI5aX2IpzcvfGsoudcOtZCM5MbvMrARpYvzsAnwuLWOiiNjWMegGSFe1ai6FFfR3XdYG-sF4rZnAzVZ12aCxrqbyZwfi9MZ6uNJyGZl7E9rSAv5E9aTpYUkag8DxkWvNVmR9hzreKk5GV_8M7yGWa_SK5U5OJg-KfpjZmsoKKrnIi-w6gv9KUXofWYgGmWwxp3-HmdEaVY3LFLXOoIsW8-Zr0UW31lKD6Jp0gWET8AbFFF4SlbStZbnHlXxyBFYKgkQ_kP03BCqKM4Z5qF9NvE6NvfGqJK4J_Lqj3jmwH8plef3eDa6Av42zv3GmXXUaEmSLX3_wekNw-Varfx7dQ5MESrFYgC1WJC6BlGmlHS13TRqzqO3iVitodOZ8XPLrpQrTELFkmt19dhANqF-AUi1fq_UXt2p7XPyhqRvMQyb9hcfoyAeDk9MPkCr_UvFI6rHyoJrSLvJx3Vc9bpveWDrj1QWAWHqW4keC3lUqJe4dTmQy6GS5_x-zDR4FC1TZ2Dfiw1xCYoJw4NGlYdj7PAr6ln8K8CP6Ts7iCAMrsXRCqZZIfGY5pYDWKgw_MPTybuHjI4Wg_SJOGODHb3JPIiYqXu1MWstld5KlOwYlHj9vMus2XHk_CzMn9_WK44dlWswIEIZHRHm-w3c_xRrNH0CRwRD07OhgdxvvUUh74tIEfhxr7LlPmjnLCYalFHj66rw-Xua8E_DHyZCi5TLjuxBiOzKAh2yYN7xEbcaaLAYOkcjvAay6gzthaQUwb41y2s7OG9Rh5M1ha-DMqA2bqexuejkJtcYyvph48XU_LPtpqDos-3VOPf34_i3Q9zJWpUwsRF5UG0IPsHeGxMSgS&state=du77ted9c4dlvnpqlt58g53tkf1j2l8&session_state=001f28aa-7549-9fb4-4772-617dbfb28646]
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:138] [17948] [pid:5804] Parser::ParsePostRequest - Current state: 2, input: [code=1.ASUAM-DDrJq6YUaysy52Y41DyHiWvKx0yjdGppDb8-IVm14lAHAlAA.BQABBAIAAAADAOz_BQD0_0V2b1N0c0FydGlmYWN0cwIAAAAAAHRSIMe97MX__5Y9YVLB4lMVNqB-WURZo4b2E8HnovJMe25tRlB6xl1Fn91QayPGukhvUs7H8y7jgtA9pZkByoa4-fTxVL0xaK_njmreajs0jQw-NBTtx6yOEGVjRn0tIJZBG3BIFn63xciU8izOtI2FJG49qnxq7Sa4SrGBYHCDTYd1IkPpdW3tcrovjFm-V1Q98QbSv2VuDa3hfuqXjthMH_30BqQ-jriwsQA251AlLpIzsBMP-bTTzant5G9bWcJ-qe5IfEi0hkCxiYjGWKm8tM1jjBduQ1xaUANQc_DB6u6f2gLiwTz1HJmrNLEft733NWlb4BLg6Ye6qPaJu5O_vUkyZnRhPA4cmqfCjmRlxJ8t2unRmdwUCEGg7V8EQdQnRApQy28ggHaMPXuiV9h8JGzwXgdUm2y3NbMFErCtZtSBIGDOYIz0UF-YGM8bGq0QvWO54Xj_NaFfCIMOKlwBJcQU0knd6ZOe4aL4dvRV2QNQJQPw-wu13laPT11WsljbCUCVwIy4SUBVXY-VUOWfI5aX2IpzcvfGsoudcOtZCM5MbvMrARpYvzsAnwuLWOiiNjWMegGSFe1ai6FFfR3XdYG-sF4rZnAzVZ12aCxrqbyZwfi9MZ6uNJyGZl7E9rSAv5E9aTpYUkag8DxkWvNVmR9hzreKk5GV_8M7yGWa_SK5U5OJg-KfpjZmsoKKrnIi-w6gv9KUXofWYgGmWwxp3-HmdEaVY3LFLXOoIsW8-Zr0UW31lKD6Jp0gWET8AbFFF4SlbStZbnHlXxyBFYKgkQ_kP03BCqKM4Z5qF9NvE6NvfGqJK4J_Lqj3jmwH8plef3eDa6Av42zv3GmXXUaEmSLX3_wekNw-Varfx7dQ5MESrFYgC1WJC6BlGmlHS13TRqzqO3iVitodOZ8XPLrpQrTELFkmt19dhANqF-AUi1fq_UXt2p7XPyhqRvMQyb9hcfoyAeDk9MPkCr_UvFI6rHyoJrSLvJx3Vc9bpveWDrj1QWAWHqW4keC3lUqJe4dTmQy6GS5_x-zDR4FC1TZ2Dfiw1xCYoJw4NGlYdj7PAr6ln8K8CP6Ts7iCAMrsXRCqZZIfGY5pYDWKgw_MPTybuHjI4Wg_SJOGODHb3JPIiYqXu1MWstld5KlOwYlHj9vMus2XHk_CzMn9_WK44dlWswIEIZHRHm-w3c_xRrNH0CRwRD07OhgdxvvUUh74tIEfhxr7LlPmjnLCYalFHj66rw-Xua8E_DHyZCi5TLjuxBiOzKAh2yYN7xEbcaaLAYOkcjvAay6gzthaQUwb41y2s7OG9Rh5M1ha-DMqA2bqexuejkJtcYyvph48XU_LPtpqDos-3VOPf34_i3Q9zJWpUwsRF5UG0IPsHeGxMSgS&state=du77ted9c4dlvnpqlt58g53tkf1j2l8&session_state=001f28aa-7549-9fb4-4772-617dbfb28646]
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:160] [17948] [pid:5804] Parser::ParsePostRequest - Processing body
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:161] [17948] [pid:5804] Parser::ParsePostRequest - Body string size: 1587
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:168] [17948] [pid:5804] Parser::ParsePostRequest - Content-Type: [application/x-www-form-urlencoded]
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:169] [17948] [pid:5804] Parser::ParsePostRequest - Content-Length: [1587]
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:170] [17948] [pid:5804] Parser::ParsePostRequest - Expected Content-Length: 1587
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:188] [17948] [pid:5804] Parser::ParsePostRequest - Body validation passed, parsing body line
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:91] [17948] [pid:5804] Parser::ParseBodyLine - Input size: 1587, content: [code=1.ASUAM-DDrJq6YUaysy52Y41DyHiWvKx0yjdGppDb8-IVm14lAHAlAA.BQABBAIAAAADAOz_BQD0_0V2b1N0c0FydGlmYWN0cwIAAAAAAHRSIMe97MX__5Y9YVLB4lMVNqB-WURZo4b2E8HnovJMe25tRlB6xl1Fn91QayPGukhvUs7H8y7jgtA9pZkByoa4-fTxVL0xaK_njmreajs0jQw-NBTtx6yOEGVjRn0tIJZBG3BIFn63xciU8izOtI2FJG49qnxq7Sa4SrGBYHCDTYd1IkPpdW3tcrovjFm-V1Q98QbSv2VuDa3hfuqXjthMH_30BqQ-jriwsQA251AlLpIzsBMP-bTTzant5G9bWcJ-qe5IfEi0hkCxiYjGWKm8tM1jjBduQ1xaUANQc_DB6u6f2gLiwTz1HJmrNLEft733NWlb4BLg6Ye6qPaJu5O_vUkyZnRhPA4cmqfCjmRlxJ8t2unRmdwUCEGg7V8EQdQnRApQy28ggHaMPXuiV9h8JGzwXgdUm2y3NbMFErCtZtSBIGDOYIz0UF-YGM8bGq0QvWO54Xj_NaFfCIMOKlwBJcQU0knd6ZOe4aL4dvRV2QNQJQPw-wu13laPT11WsljbCUCVwIy4SUBVXY-VUOWfI5aX2IpzcvfGsoudcOtZCM5MbvMrARpYvzsAnwuLWOiiNjWMegGSFe1ai6FFfR3XdYG-sF4rZnAzVZ12aCxrqbyZwfi9MZ6uNJyGZl7E9rSAv5E9aTpYUkag8DxkWvNVmR9hzreKk5GV_8M7yGWa_SK5U5OJg-KfpjZmsoKKrnIi-w6gv9KUXofWYgGmWwxp3-HmdEaVY3LFLXOoIsW8-Zr0UW31lKD6Jp0gWET8AbFFF4SlbStZbnHlXxyBFYKgkQ_kP03BCqKM4Z5qF9NvE6NvfGqJK4J_Lqj3jmwH8plef3eDa6Av42zv3GmXXUaEmSLX3_wekNw-Varfx7dQ5MESrFYgC1WJC6BlGmlHS13TRqzqO3iVitodOZ8XPLrpQrTELFkmt19dhANqF-AUi1fq_UXt2p7XPyhqRvMQyb9hcfoyAeDk9MPkCr_UvFI6rHyoJrSLvJx3Vc9bpveWDrj1QWAWHqW4keC3lUqJe4dTmQy6GS5_x-zDR4FC1TZ2Dfiw1xCYoJw4NGlYdj7PAr6ln8K8CP6Ts7iCAMrsXRCqZZIfGY5pYDWKgw_MPTybuHjI4Wg_SJOGODHb3JPIiYqXu1MWstld5KlOwYlHj9vMus2XHk_CzMn9_WK44dlWswIEIZHRHm-w3c_xRrNH0CRwRD07OhgdxvvUUh74tIEfhxr7LlPmjnLCYalFHj66rw-Xua8E_DHyZCi5TLjuxBiOzKAh2yYN7xEbcaaLAYOkcjvAay6gzthaQUwb41y2s7OG9Rh5M1ha-DMqA2bqexuejkJtcYyvph48XU_LPtpqDos-3VOPf34_i3Q9zJWpUwsRF5UG0IPsHeGxMSgS&state=du77ted9c4dlvnpqlt58g53tkf1j2l8&session_state=001f28aa-7549-9fb4-4772-617dbfb28646]
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:110] [17948] [pid:5804] Parser::ParseBodyLine - Extracted: [code] = [1.ASUAM-DDrJq6YUaysy52Y41DyHiWvKx0yjdGppDb8-IVm14lAHAlAA.BQABBAIAAAADAOz_BQD0_0V2b1N0c0FydGlmYWN0cwIAAAAAAHRSIMe97MX__5Y9YVLB4lMVNqB-WURZo4b2E8HnovJMe25tRlB6xl1Fn91QayPGukhvUs7H8y7jgtA9pZkByoa4-fTxVL0xaK_njmreajs0jQw-NBTtx6yOEGVjRn0tIJZBG3BIFn63xciU8izOtI2FJG49qnxq7Sa4SrGBYHCDTYd1IkPpdW3tcrovjFm-V1Q98QbSv2VuDa3hfuqXjthMH_30BqQ-jriwsQA251AlLpIzsBMP-bTTzant5G9bWcJ-qe5IfEi0hkCxiYjGWKm8tM1jjBduQ1xaUANQc_DB6u6f2gLiwTz1HJmrNLEft733NWlb4BLg6Ye6qPaJu5O_vUkyZnRhPA4cmqfCjmRlxJ8t2unRmdwUCEGg7V8EQdQnRApQy28ggHaMPXuiV9h8JGzwXgdUm2y3NbMFErCtZtSBIGDOYIz0UF-YGM8bGq0QvWO54Xj_NaFfCIMOKlwBJcQU0knd6ZOe4aL4dvRV2QNQJQPw-wu13laPT11WsljbCUCVwIy4SUBVXY-VUOWfI5aX2IpzcvfGsoudcOtZCM5MbvMrARpYvzsAnwuLWOiiNjWMegGSFe1ai6FFfR3XdYG-sF4rZnAzVZ12aCxrqbyZwfi9MZ6uNJyGZl7E9rSAv5E9aTpYUkag8DxkWvNVmR9hzreKk5GV_8M7yGWa_SK5U5OJg-KfpjZmsoKKrnIi-w6gv9KUXofWYgGmWwxp3-HmdEaVY3LFLXOoIsW8-Zr0UW31lKD6Jp0gWET8AbFFF4SlbStZbnHlXxyBFYKgkQ_kP03BCqKM4Z5qF9NvE6NvfGqJK4J_Lqj3jmwH8plef3eDa6Av42zv3GmXXUaEmSLX3_wekNw-Varfx7dQ5MESrFYgC1WJC6BlGmlHS13TRqzqO3iVitodOZ8XPLrpQrTELFkmt19dhANqF-AUi1fq_UXt2p7XPyhqRvMQyb9hcfoyAeDk9MPkCr_UvFI6rHyoJrSLvJx3Vc9bpveWDrj1QWAWHqW4keC3lUqJe4dTmQy6GS5_x-zDR4FC1TZ2Dfiw1xCYoJw4NGlYdj7PAr6ln8K8CP6Ts7iCAMrsXRCqZZIfGY5pYDWKgw_MPTybuHjI4Wg_SJOGODHb3JPIiYqXu1MWstld5KlOwYlHj9vMus2XHk_CzMn9_WK44dlWswIEIZHRHm-w3c_xRrNH0CRwRD07OhgdxvvUUh74tIEfhxr7LlPmjnLCYalFHj66rw-Xua8E_DHyZCi5TLjuxBiOzKAh2yYN7xEbcaaLAYOkcjvAay6gzthaQUwb41y2s7OG9Rh5M1ha-DMqA2bqexuejkJtcYyvph48XU_LPtpqDos-3VOPf34_i3Q9zJWpUwsRF5UG0IPsHeGxMSgS]
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:110] [17948] [pid:5804] Parser::ParseBodyLine - Extracted: [state] = [du77ted9c4dlvnpqlt58g53tkf1j2l8]
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:110] [17948] [pid:5804] Parser::ParseBodyLine - Extracted: [session_state] = [001f28aa-7549-9fb4-4772-617dbfb28646]
+[DEBUG] 2026-02-04 15:04:29.285 [IAMHTTP:Parser.cpp:124] [17948] [pid:5804] Parser::ParseBodyLine - Body parsed successfully, total fields: 3
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Parser.cpp:127] [17948] [pid:5804] Parser::ParseBodyLine -   code: 1.ASUAM-DDrJq6YUaysy52Y41DyHiWvKx0yjdGppDb8-IVm14lAHAlAA.BQABBAIAAAADAOz_BQD0_0V2b1N0c0FydGlmYWN0cwIAAAAAAHRSIMe97MX__5Y9YVLB4lMVNqB-WURZo4b2E8HnovJMe25tRlB6xl1Fn91QayPGukhvUs7H8y7jgtA9pZkByoa4-fTxVL0xaK_njmreajs0jQw-NBTtx6yOEGVjRn0tIJZBG3BIFn63xciU8izOtI2FJG49qnxq7Sa4SrGBYHCDTYd1IkPpdW3tcrovjFm-V1Q98QbSv2VuDa3hfuqXjthMH_30BqQ-jriwsQA251AlLpIzsBMP-bTTzant5G9bWcJ-qe5IfEi0hkCxiYjGWKm8tM1jjBduQ1xaUANQc_DB6u6f2gLiwTz1HJmrNLEft733NWlb4BLg6Ye6qPaJu5O_vUkyZnRhPA4cmqfCjmRlxJ8t2unRmdwUCEGg7V8EQdQnRApQy28ggHaMPXuiV9h8JGzwXgdUm2y3NbMFErCtZtSBIGDOYIz0UF-YGM8bGq0QvWO54Xj_NaFfCIMOKlwBJcQU0knd6ZOe4aL4dvRV2QNQJQPw-wu13laPT11WsljbCUCVwIy4SUBVXY-VUOWfI5aX2IpzcvfGsoudcOtZCM5MbvMrARpYvzsAnwuLWOiiNjWMegGSFe1ai6FFfR3XdYG-sF4rZnAzVZ12aCxrqbyZwfi9MZ6uNJyGZl7E9rSAv5E9aTpYUkag8DxkWvNVmR9hzreKk5GV_8M7yGWa_SK5U5OJg-KfpjZmsoKKrnIi-w6gv9KUXofWYgGmWwxp3-HmdEaVY3LFLXOoIsW8-Zr0UW31lKD6Jp0gWET8AbFFF4SlbStZbnHlXxyBFYKgkQ_kP03BCqKM4Z5qF9NvE6NvfGqJK4J_Lqj3jmwH8plef3eDa6Av42zv3GmXXUaEmSLX3_wekNw-Varfx7dQ5MESrFYgC1WJC6BlGmlHS13TRqzqO3iVitodOZ8XPLrpQrTELFkmt19dhANqF-AUi1fq_UXt2p7XPyhqRvMQyb9hcfoyAeDk9MPkCr_UvFI6rHyoJrSLvJx3Vc9bpveWDrj1QWAWHqW4keC3lUqJe4dTmQy6GS5_x-zDR4FC1TZ2Dfiw1xCYoJw4NGlYdj7PAr6ln8K8CP6Ts7iCAMrsXRCqZZIfGY5pYDWKgw_MPTybuHjI4Wg_SJOGODHb3JPIiYqXu1MWstld5KlOwYlHj9vMus2XHk_CzMn9_WK44dlWswIEIZHRHm-w3c_xRrNH0CRwRD07OhgdxvvUUh74tIEfhxr7LlPmjnLCYalFHj66rw-Xua8E_DHyZCi5TLjuxBiOzKAh2yYN7xEbcaaLAYOkcjvAay6gzthaQUwb41y2s7OG9Rh5M1ha-DMqA2bqexuejkJtcYyvph48XU_LPtpqDos-3VOPf34_i3Q9zJWpUwsRF5UG0IPsHeGxMSgS
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Parser.cpp:127] [17948] [pid:5804] Parser::ParseBodyLine -   state: du77ted9c4dlvnpqlt58g53tkf1j2l8
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Parser.cpp:127] [17948] [pid:5804] Parser::ParseBodyLine -   session_state: 001f28aa-7549-9fb4-4772-617dbfb28646
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Parser.cpp:130] [17948] [pid:5804] Parser::ParseBodyLine - Setting parser_state to PARSE_FINISHED
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Parser.cpp:203] [17948] [pid:5804] Parser::ParsePostRequest - After processing, state is now: 3
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Parser.cpp:238] [17948] [pid:5804] Parser::Parse - Parsing completed successfully after 21 lines
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Parser.cpp:243] [17948] [pid:5804] Parser::Parse - Finished reading lines, total: 21
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Parser.cpp:244] [17948] [pid:5804] Parser::Parse - Final parser state: 3
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Parser.cpp:245] [17948] [pid:5804] Parser::Parse - is_line_received: 1
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Parser.cpp:254] [17948] [pid:5804] Parser::Parse - Returning STATUS::SUCCEED
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:WEBServer.cpp:56] [17948] [pid:5804] WEBServer::HandleConnection - Parser returned status: 0
+[DEBUG] 2026-02-04 15:04:29.286 [IAM:Parser.h:122] [17948] [pid:5804] Parser.IsFinished
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:WEBServer.cpp:57] [17948] [pid:5804] WEBServer::HandleConnection - Parser IsFinished(): 1
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:WEBServer.cpp:61] [17948] [pid:5804] WEBServer::HandleConnection - Sending ValidResponse
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Socket.cpp:38] [17948] [pid:5804] Socket::Send
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:WEBServer.cpp:81] [17948] [pid:5804] WEBServer::HandleConnection - Finished
+[DEBUG] 2026-02-04 15:04:29.286 [IAM:Socket.h:143] [17948] [pid:5804] Socket::~Socket
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Socket.cpp:97] [17948] [pid:5804] Socket::Close
+[DEBUG] 2026-02-04 15:04:29.286 [IAM:Parser.h:122] [17948] [pid:5804] Parser.IsFinished
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:WEBServer.cpp:134] [17948] [pid:5804] WEBServer::ListenerThread - Parser finished after 2 loops, 1 seconds
+[DEBUG] 2026-02-04 15:04:29.286 [IAM:Parser.h:122] [17948] [pid:5804] Parser.IsFinished
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:WEBServer.cpp:143] [17948] [pid:5804] WEBServer::ListenerThread - Exited loop: loops=2, elapsed=5 sec, timeout=120 sec, timed_out=0, parser_finished=1, connections=1
+[DEBUG] 2026-02-04 15:04:29.286 [IAM:Parser.h:130] [17948] [pid:5804] Parser.RetrieveAuthCode
+[DEBUG] 2026-02-04 15:04:29.286 [IAM:Parser.h:143] [17948] [pid:5804] Parser.RetrieveSamlResponse
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:WEBServer.cpp:149] [17948] [pid:5804] WEBServer::ListenerThread - Retrieved code length: 1493, saml length: 0
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:Socket.cpp:97] [17948] [pid:5804] Socket::Close
+[DEBUG] 2026-02-04 15:04:29.286 [IAMHTTP:WEBServer.cpp:153] [17948] [pid:5804] WEBServer::ListenerThread - Socket closed, thread ending
+[DEBUG] 2026-02-04 15:04:29.286 [ODBCDLL:dllmain.c:58] [17948] [pid:5804] DLL_THREAD_DETACH
+[DEBUG] 2026-02-04 15:04:29.287 [IAM:WEBServer.h:170] [14164] [pid:5804] WEBServer::IsTimeout
+[DEBUG] 2026-02-04 15:04:29.287 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:364] [14164] [pid:5804] RequestAuthorizationCode: Server completed. IsTimeout: 0
+[DEBUG] 2026-02-04 15:04:29.287 [IAM:WEBServer.h:170] [14164] [pid:5804] WEBServer::IsTimeout
+[DEBUG] 2026-02-04 15:04:29.287 [IAM:WEBServer.h:138] [14164] [pid:5804] WEBServer::GetCode
+[DEBUG] 2026-02-04 15:04:29.287 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:373] [14164] [pid:5804] RequestAuthorizationCode: Retrieved authorization code (length: 1493)
+[DEBUG] 2026-02-04 15:04:29.287 [IAM:Socket.h:143] [14164] [pid:5804] Socket::~Socket
+[DEBUG] 2026-02-04 15:04:29.287 [IAMHTTP:Socket.cpp:97] [14164] [pid:5804] Socket::Close
+[DEBUG] 2026-02-04 15:04:29.287 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:381] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::RequestAccessToken
+[DEBUG] 2026-02-04 15:04:29.287 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:394] [14164] [pid:5804] Added 'openid' prefix to scope. Final scope: openid api://acbc9678-ca74-4637-a690-dbf3e2159b5e/jdbc_login
+[DEBUG] 2026-02-04 15:04:29.287 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:425] [14164] [pid:5804] client_secret NOT provided - using public client flow
+[DEBUG] 2026-02-04 15:04:29.287 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:428] [14164] [pid:5804] RequestAccessToken: Sending token request (JDBC-compatible, no PKCE)
+[DEBUG] 2026-02-04 15:04:29.287 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:431] [14164] [pid:5804] RequestAccessToken: scope='openid api://acbc9678-ca74-4637-a690-dbf3e2159b5e/jdbc_login', grant_type='authorization_code', redirect_uri='http://localhost:62925/redshift/'
+[DEBUG] 2026-02-04 15:04:29.288 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:440] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::RequestAccessToken 
+[DEBUG] 2026-02-04 15:04:29.288 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:444] [14164] [pid:5804] RequestAccessToken: Proxy check - UsingHTTPSProxy=1, UseProxyIdpAuth=1
+[DEBUG] 2026-02-04 15:04:29.288 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:454] [14164] [pid:5804] RequestAccessToken: Using HTTPS proxy - Host=campusbc, Port=8080
+[DEBUG] 2026-02-04 15:04:29.288 [IAM:IAMPluginCredentialsProvider.cpp:226] [14164] [pid:5804] IAMPluginCredentialsProvider::GetHttpClient
+[DEBUG] 2026-02-04 15:04:29.288 [IAM_HTTP_CLNT:IAMHttpClient.cpp:43] [14164] [pid:5804] IAMHttpClient::GetClientConfiguration
+[DEBUG] 2026-02-04 15:04:29.288 [IAM:IAMUtils.cpp:662] [14164] [pid:5804] Selected Microsoft IdP host: https://login.microsoftonline.com for partition: '' (processed as '')
+[DEBUG] 2026-02-04 15:04:29.288 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:468] [14164] [pid:5804] RequestAccessToken: Token endpoint URL: https://login.microsoftonline.com/acc3e033-ba9a-4661-b2b3-2e76638d43c8/oauth2/v2.0/token
+[DEBUG] 2026-02-04 15:04:29.288 [IAM:IAMUtils.cpp:633] [14164] [pid:5804] IAMUtils::ValidateURL uri=https://login.microsoftonline.com/acc3e033-ba9a-4661-b2b3-2e76638d43c8/oauth2/v2.0/token
+[DEBUG] 2026-02-04 15:04:29.288 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:474] [14164] [pid:5804] RequestAccessToken: Request body length: 1728 bytes
+[DEBUG] 2026-02-04 15:04:29.288 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:476] [14164] [pid:5804] RequestAccessToken: Making HTTP POST request...
+[DEBUG] 2026-02-04 15:04:29.689 [ODBCDLL:dllmain.c:50] [14308] [pid:5804] DLL_THREAD_ATTACH
+[DEBUG] 2026-02-04 15:04:30.164 [ODBCDLL:dllmain.c:50] [12944] [pid:5804] DLL_THREAD_ATTACH
+[DEBUG] 2026-02-04 15:04:30.164 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:483] [14164] [pid:5804] RequestAccessToken: HTTP request completed. Status code: 200
+[DEBUG] 2026-02-04 15:04:30.165 [IAMCRD:IAMBrowserAzureOAuth2CredentialsProvider.cpp:489] [14164] [pid:5804] IAMBrowserAzureOAuth2CredentialsProvider::RequestAccessToken: response {"token_type":"Bearer","scope":"api://acbc9678-ca74-4637-a690-dbf3e2159b5e/jdbc_login","expires_in":4570,"ext_expires_in":4570,"access_token":"***masked***","id_token":"***masked***"}
+
+[DEBUG] 2026-02-04 15:04:30.165 [IAM:IAMCredentialsProvider.cpp:98] [14164] [pid:5804] IAMCredentialsProvider::~IAMCredentialsProvider
+[DEBUG] 2026-02-04 15:04:30.165 [IAMCLNT:RsIamClient.cpp:213] [14164] [pid:5804] RsIamClient::~RsIamClient
+[DEBUG] 2026-02-04 15:04:30.166 [ODBCDLL:dllmain.c:50] [25128] [pid:5804] DLL_THREAD_ATTACH
+[DEBUG] 2026-02-04 15:04:30.171 [ODBCDLL:dllmain.c:58] [24756] [pid:5804] DLL_THREAD_DETACH
+[DEBUG] 2026-02-04 15:04:30.171 [ODBCDLL:dllmain.c:58] [2056] [pid:5804] DLL_THREAD_DETACH
+[DEBUG] 2026-02-04 15:04:30.171 [ODBCDLL:dllmain.c:58] [25128] [pid:5804] DLL_THREAD_DETACH
+[DEBUG] 2026-02-04 15:04:30.175 [RSLIBPQ:rslibpq.c:221] [14164] [pid:5804] pConnectProps->szKerberosServiceName=
+[DEBUG] 2026-02-04 15:04:30.175 [RSLIBPQ:rslibpq.c:222] [14164] [pid:5804] pConnectProps->szKerberosAPI=
+[DEBUG] 2026-02-04 15:04:30.175 [RSLIBPQ:rslibpq.c:315] [14164] [pid:5804] using plugin_name=BrowserAzureADOAuth2
+[DEBUG] 2026-02-04 15:04:30.175 [RSLIBPQ:rslibpq.c:419] [14164] [pid:5804] pConnectProps->iStreamingCursorRows=100
+[DEBUG] 2026-02-04 15:04:30.175 [RSLIBPQ:rslibpq.c:421] [14164] [pid:5804] pConnectProps->iCscEnable=0
+[DEBUG] 2026-02-04 15:04:30.175 [RSLIBPQ:rslibpq.c:427] [14164] [pid:5804] Possible Cursor Mode (if FWD only cursor): Streaming Cursor
+[TRACE] 2026-02-04 15:04:30.282 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.282 [FECNN:fe-connect.c:2016] [14164] [pid:5804] CONNECTION_NEEDED
+[DEBUG] 2026-02-04 15:04:30.283 [ODBCDLL:dllmain.c:50] [25940] [pid:5804] DLL_THREAD_ATTACH
+[TRACE] 2026-02-04 15:04:30.372 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.372 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.372 [ODBCPQ:fe-misc.c:494] [14164] [pid:5804] To backend[C]> Msg  
+[TRACE] 2026-02-04 15:04:30.372 [ODBCPQ:fe-misc.c:232] [14164] [pid:5804] To backend[S]> ... 4 bytes
+[TRACE] 2026-02-04 15:04:30.372 [ODBCPQ:fe-misc.c:530] [14164] [pid:5804] To backend> Msg complete, length 8
+[TRACE] 2026-02-04 15:04:30.514 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.514 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[DEBUG] 2026-02-04 15:04:30.518 [FESEC:fe-secure.c:906] [14164] [pid:5804] Min TLS version=1.2
+
+[TRACE] 2026-02-04 15:04:30.613 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.702 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.704 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.704 [ODBCPQ:fe-misc.c:494] [14164] [pid:5804] To backend[C]> Msg  
+[TRACE] 2026-02-04 15:04:30.704 [ODBCPQ:fe-misc.c:232] [14164] [pid:5804] To backend[S]> ... 236 bytes
+[TRACE] 2026-02-04 15:04:30.704 [ODBCPQ:fe-misc.c:530] [14164] [pid:5804] To backend> Msg complete, length 240
+[TRACE] 2026-02-04 15:04:30.781 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.781 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> R
+[TRACE] 2026-02-04 15:04:30.781 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 8
+[TRACE] 2026-02-04 15:04:30.781 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 14
+[TRACE] 2026-02-04 15:04:30.781 [ODBCPQ:fe-misc.c:494] [14164] [pid:5804] To backend[C]> Msg i
+[TRACE] 2026-02-04 15:04:30.781 [ODBCPQ:fe-misc.c:232] [14164] [pid:5804] To backend[S]> ... 1788 bytes
+[TRACE] 2026-02-04 15:04:30.781 [ODBCPQ:fe-misc.c:530] [14164] [pid:5804] To backend> Msg complete, length 1793
+[TRACE] 2026-02-04 15:04:30.781 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.956 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> R
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 8
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 0
+[TRACE] 2026-02-04 15:04:30.956 [FECNN:fe-connect.c:2008] [14164] [pid:5804] keep_going:
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 54
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 16 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 32 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 22
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 14 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 2 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 28
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 15 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 7 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 23
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 9 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 8 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 25
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 17 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 2 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 27
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 13 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 8 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 21
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 12 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 3 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 28
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 15 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 7 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 25
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 14 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 5 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 64
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 21 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 37 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 17
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 8 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 3 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 35
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 22 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 7 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 28
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 12 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 10 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 29
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 13 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 10 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 29
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 21 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 2 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 27
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 16 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 5 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 25
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 17 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 2 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 26
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 17 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 3 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 21
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 14 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 1 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 52
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 10 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 36 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> S
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 30
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 23 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:170] [14164] [pid:5804] From backend[S]< ... 1 bytes
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> K
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 12
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 1073758492
+[TRACE] 2026-02-04 15:04:30.956 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 1823035772
+[TRACE] 2026-02-04 15:04:30.957 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> Z
+[TRACE] 2026-02-04 15:04:30.957 [ODBCPQ:fe-misc.c:272] [14164] [pid:5804] From backend [I:4]< 5
+[TRACE] 2026-02-04 15:04:30.957 [ODBCPQ:fe-misc.c:118] [14164] [pid:5804] From backend[C]> I
+[ERROR] 2026-02-04 15:04:30.957 [RSLIBPQ:rslibpq.c:472] [14164] pError=
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLDriverConnectW() return SQL_SUCCESS
+	*pcchConnStrOut=95
+	*wszConnStrOut=DB=dev;Driver=Amazon Redshift ODBC Driver (x64);Port=5439;Server=da-rs-01-p.data.leumi-aws.prd;
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetDiagRecW(
+	hHandleType=SQL_HANDLE_DBC
+	pHandle=0x00000298729FB710
+	hRecNumber=1
+	pwSqlState=0x000000C149471DB4
+	piNativeError=NULL
+	pwMessageText=NULL
+	cchLen=0
+	pcchLen=0x000000C149471D98
+
+[TRACE] 2026-02-04 15:04:30.957 [RSDIAG:rserror.cpp:365] [14164] [pid:5804] RS_SQLGetDiagRec rc:100, pcbLen:0
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetDiagRecW() return SQL_NO_DATA
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetFunctions(
+	phdbc=0x00000298729FB710
+	uhFunctionId=999
+	puhSupported=0x000000C1494720F0
+	 )
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetFunctions() return SQL_SUCCESS
+	*puhSupported=-2
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetInfoW(
+	phdbc=0x00000298729FB710
+	hInfoType=SQL_CURSOR_COMMIT_BEHAVIOR
+	pwInfoValue=0x000002987526C04E
+	cbLen=2
+	pcbLen=NULL
+	 )
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetInfoW() return SQL_SUCCESS
+	*pInfoValue=2
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetInfoW(
+	phdbc=0x00000298729FB710
+	hInfoType=SQL_CURSOR_ROLLBACK_BEHAVIOR
+	pwInfoValue=0x000002987526C050
+	cbLen=2
+	pcbLen=NULL
+	 )
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetInfoW() return SQL_SUCCESS
+	*pInfoValue=2
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetInfoW(
+	phdbc=0x00000298729FB710
+	hInfoType=SQL_GETDATA_EXTENSIONS
+	pwInfoValue=0x000002987526C03C
+	cbLen=4
+	pcbLen=NULL
+	 )
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLGetInfoW() return SQL_SUCCESS
+	*pInfoValue=0xb
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLDisconnect(
+	phdbc=0x00000298729FB710
+	 )
+
+[TRACE] 2026-02-04 15:04:30.957 [ODBCPQ:fe-misc.c:494] [14164] [pid:5804] To backend[C]> Msg X
+[TRACE] 2026-02-04 15:04:30.957 [ODBCPQ:fe-misc.c:530] [14164] [pid:5804] To backend> Msg complete, length 5
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLDisconnect() return SQL_SUCCESS
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLFreeHandle(
+	hHandleType=SQL_HANDLE_DBC
+	pHandle=0x00000298729FB710
+	 )
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLFreeHandle() return SQL_SUCCESS
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLFreeHandle(
+	hHandleType=SQL_HANDLE_ENV
+	pHandle=0x00000298760C7230
+	 )
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCAPI:rstrace.h:96] [14164] [pid:5804] SQLFreeHandle() return SQL_SUCCESS
+
+[DEBUG] 2026-02-04 15:04:30.957 [ODBCDLL:dllmain.c:66] [14164] [pid:5804] DLL_PROCESS_DETACH
