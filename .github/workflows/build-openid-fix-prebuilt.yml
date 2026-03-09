@@ -153,8 +153,16 @@ jobs:
         @"
         set ENABLE_TESTING=0
         set "RS_MULTI_DEPS_DIRS=D:\deps"
-        set "RS_OPENSSL_DIR=D:\deps\openssl\Release"
+        set "RS_OPENSSL_DIR=D:\deps\openssl"
         "@ | Out-File -FilePath "exports_basic.bat" -Encoding ASCII
+
+        # Debug: Show what we created
+        Write-Host "=== exports_basic.bat content ==="
+        Get-Content exports_basic.bat
+
+        # Debug: Show dependencies structure
+        Write-Host "`n=== D:\deps structure ==="
+        Get-ChildItem -Path "D:\deps" -Recurse -Depth 2 | Select-Object FullName
 
         # Run build
         .\build64.bat --dependencies-install-dir=D:\deps --version=${{ steps.version.outputs.VERSION }}
