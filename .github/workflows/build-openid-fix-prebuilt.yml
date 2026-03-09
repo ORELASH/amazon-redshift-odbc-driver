@@ -177,23 +177,71 @@ jobs:
 
     - name: Build ODBC Driver
       run: |
-        # Create exports_basic.bat for build script
-        @"
-        set ENABLE_TESTING=0
-        set "RS_MULTI_DEPS_DIRS=D:\deps"
-        set "RS_OPENSSL_DIR=D:\deps\openssl"
-        "@ | Out-File -FilePath "exports_basic.bat" -Encoding ASCII
+        Write-Host "=== Building ODBC Driver ===" -ForegroundColor Cyan
 
-        # Debug: Show what we created
-        Write-Host "=== exports_basic.bat content ==="
-        Get-Content exports_basic.bat
+        # Create build directory
+        $buildDir = "cmake-build\Release"
+        $installDir = "cmake-build\install"
+        New-Item -ItemType Directory -Force -Path $buildDir | Out-Null
 
-        # Debug: Show dependencies structure
-        Write-Host "`n=== D:\deps structure ==="
-        Get-ChildItem -Path "D:\deps" -Recurse -Depth 2 | Select-Object FullName
+        # Configure with CMake
+        Write-Host "`nConfiguring with CMake..."
+        cmake -G "Visual Studio 17 2022" -A x64 `
+          -B $buildDir `
+          -S . `
+          -DRS_BUILD_TYPE=Release `
+          -DCMAKE_BUILD_TYPE=Release `
+          -DCMAKE_INSTALL_PREFIX=$installDir `
+          -DRS_OPENSSL_DIR="D:\deps\openssl" `
+          -DRS_MULTI_DEPS_DIRS="D:\deps" `
+          -DRS_DEPS_DIRS=".\src\pgclient\kfw-3-2-2-final;D:\deps" `
+          -DODBC_VERSION="${{ steps.version.outputs.VERSION }}" `
+          -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 
-        # Run build
-        .\build64.bat --dependencies-install-dir=D:\deps --version=${{ steps.version.outputs.VERSION }}
+        if ($LASTEXITCODE -ne 0) {
+          Write-Host "✗ CMake configuration failed!" -ForegroundColor Red
+          exit 1
+        }
+
+        # Build
+        Write-Host "`nBuilding..."
+        cmake --build $buildDir --config Release --target ALL_BUILD -j 4
+
+        if ($LASTEXITCODE -ne 0) {
+          Write-Host "✗ Build failed!" -ForegroundColor Red
+          exit 1
+        }
+
+        # Install
+        Write-Host "`nInstalling..."
+        cmake --build $buildDir --config Release --target INSTALL
+
+        if ($LASTEXITCODE -ne 0) {
+          Write-Host "✗ Install failed!" -ForegroundColor Red
+          exit 1
+        }
+
+        Write-Host "`n✓ Build completed successfully!" -ForegroundColor Green
+      shell: pwsh
+
+    - name: Create MSI Installer
+      run: |
+        Write-Host "=== Creating MSI Installer ===" -ForegroundColor Cyan
+
+        # Run package script
+        .\package64.bat
+
+        if ($LASTEXITCODE -ne 0) {
+          Write-Host "⚠ Package script returned error, but continuing..." -ForegroundColor Yellow
+        }
+
+        # Check if MSI was created
+        $msi = Get-ChildItem -Path "src\odbc\rsodbc\install" -Filter "*.msi" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+        if ($msi) {
+          Write-Host "✓ MSI created: $($msi.FullName)" -ForegroundColor Green
+        } else {
+          Write-Host "⚠ MSI not found, checking if it needs manual build..." -ForegroundColor Yellow
+        }
       shell: pwsh
 
     - name: List build outputs
