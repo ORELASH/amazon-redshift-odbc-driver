@@ -47,9 +47,15 @@ jobs:
       uses: actions/cache@v4
       id: deps-cache
       with:
-        path: D:\deps
-        key: ${{ runner.os }}-redshift-deps-v2
+        path: |
+          D:\deps\openssl
+          D:\deps\aws-sdk-cpp
+          D:\deps\c-ares
+          D:\deps\googletest
+          D:\deps\build\aws-sdk-cpp
+        key: ${{ runner.os }}-redshift-deps-v3-${{ hashFiles('.github/workflows/build-openid-fix-prebuilt.yml') }}
         restore-keys: |
+          ${{ runner.os }}-redshift-deps-v3-
           ${{ runner.os }}-redshift-deps-
 
     - name: Download and build dependencies
