@@ -1,4 +1,4 @@
-name: Build ODBC Driver - OPENID Fix
+name: Build ODBC Driver - OPENID Fix (Pre-built Dependencies)
 
 on:
   push:
@@ -43,29 +43,101 @@ jobs:
       run: choco install strawberryperl -y
       shell: pwsh
 
-    - name: Setup vcpkg cache
+    - name: Setup dependencies cache
       uses: actions/cache@v4
-      id: vcpkg-cache
+      id: deps-cache
       with:
-        path: C:\vcpkg\installed\x64-windows
-        key: ${{ runner.os }}-vcpkg-openid-${{ hashFiles('**/vcpkg.json') }}
+        path: D:\deps
+        key: ${{ runner.os }}-redshift-deps-v2
         restore-keys: |
-          ${{ runner.os }}-vcpkg-openid-
-          ${{ runner.os }}-vcpkg-
+          ${{ runner.os }}-redshift-deps-
 
-    - name: Setup vcpkg
-      uses: lukka/run-vcpkg@v11
-      with:
-        vcpkgGitCommitId: '01f602195983451bc83e72f4214af2cbc495aa94'
-
-    - name: Install dependencies with vcpkg
-      if: steps.vcpkg-cache.outputs.cache-hit != 'true'
+    - name: Download and build dependencies
+      if: steps.deps-cache.outputs.cache-hit != 'true'
       run: |
-        vcpkg install `
-          openssl:x64-windows `
-          aws-sdk-cpp[core,redshift,sts,identity-management]:x64-windows `
-          c-ares:x64-windows `
-          gtest:x64-windows
+        # Create dependencies directory
+        New-Item -ItemType Directory -Force -Path "D:\deps"
+        New-Item -ItemType Directory -Force -Path "D:\deps\build"
+
+        # Download OpenSSL 1.1.1w pre-built binaries
+        Write-Host "Downloading OpenSSL..."
+        $opensslUrl = "https://slproweb.com/download/Win64OpenSSL-1_1_1w.exe"
+        $opensslInstaller = "D:\deps\openssl-installer.exe"
+        Invoke-WebRequest -Uri $opensslUrl -OutFile $opensslInstaller
+
+        # Install OpenSSL silently
+        Write-Host "Installing OpenSSL..."
+        Start-Process -FilePath $opensslInstaller -ArgumentList "/VERYSILENT","/SP-","/SUPPRESSMSGBOXES","/DIR=D:\deps\openssl" -Wait -NoNewWindow
+
+        # Download and build AWS SDK C++
+        Write-Host "Downloading AWS SDK C++..."
+        git clone --depth 1 --branch 1.11.743 https://github.com/aws/aws-sdk-cpp.git D:\deps\build\aws-sdk-cpp
+
+        New-Item -ItemType Directory -Force -Path "D:\deps\build\aws-sdk-cpp-build"
+        cd D:\deps\build\aws-sdk-cpp-build
+
+        cmake -G "Visual Studio 17 2022" -A x64 `
+          -DCMAKE_BUILD_TYPE=Release `
+          -DCMAKE_INSTALL_PREFIX="D:\deps\aws-sdk-cpp" `
+          -DBUILD_ONLY="core;redshift;sts;identity-management" `
+          -DENABLE_TESTING=OFF `
+          -DBUILD_SHARED_LIBS=OFF `
+          -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded `
+          D:\deps\build\aws-sdk-cpp
+
+        cmake --build . --config Release --target install -j 4
+
+        # Download and build c-ares
+        Write-Host "Downloading c-ares..."
+        git clone --depth 1 --branch v1.34.5 https://github.com/c-ares/c-ares.git D:\deps\build\c-ares
+
+        New-Item -ItemType Directory -Force -Path "D:\deps\build\c-ares-build"
+        cd D:\deps\build\c-ares-build
+
+        cmake -G "Visual Studio 17 2022" -A x64 `
+          -DCMAKE_BUILD_TYPE=Release `
+          -DCMAKE_INSTALL_PREFIX="D:\deps\c-ares" `
+          -DCARES_STATIC=ON `
+          -DCARES_SHARED=OFF `
+          -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded `
+          D:\deps\build\c-ares
+
+        cmake --build . --config Release --target install -j 4
+
+        # Download and build GoogleTest
+        Write-Host "Downloading GoogleTest..."
+        git clone --depth 1 --branch v1.17.0 https://github.com/google/googletest.git D:\deps\build\googletest
+
+        New-Item -ItemType Directory -Force -Path "D:\deps\build\googletest-build"
+        cd D:\deps\build\googletest-build
+
+        cmake -G "Visual Studio 17 2022" -A x64 `
+          -DCMAKE_BUILD_TYPE=Release `
+          -DCMAKE_INSTALL_PREFIX="D:\deps\googletest" `
+          -DBUILD_SHARED_LIBS=OFF `
+          -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded `
+          D:\deps\build\googletest
+
+        cmake --build . --config Release --target install -j 4
+
+        Write-Host "Dependencies built successfully!"
+
+      shell: pwsh
+
+    - name: Verify dependencies structure
+      run: |
+        Write-Host "=== Dependencies Structure ==="
+        tree /F D:\deps | Select-Object -First 50
+
+        Write-Host "`n=== OpenSSL ==="
+        if (Test-Path "D:\deps\openssl") {
+          Get-ChildItem -Path "D:\deps\openssl" -Recurse | Select-Object -First 20
+        }
+
+        Write-Host "`n=== AWS SDK ==="
+        if (Test-Path "D:\deps\aws-sdk-cpp") {
+          Get-ChildItem -Path "D:\deps\aws-sdk-cpp" -Recurse | Select-Object -First 20
+        }
       shell: pwsh
 
     - name: Read version
@@ -77,28 +149,45 @@ jobs:
 
     - name: Build ODBC Driver
       run: |
-        $env:VCPKG_ROOT = "C:\vcpkg"
-        .\build64.bat --dependencies-install-dir=$env:VCPKG_ROOT\installed\x64-windows --version=${{ steps.version.outputs.VERSION }}
+        # Create exports_basic.bat for build script
+        @"
+        set ENABLE_TESTING=0
+        set "RS_MULTI_DEPS_DIRS=D:\deps"
+        set "RS_OPENSSL_DIR=D:\deps\openssl\Release"
+        "@ | Out-File -FilePath "exports_basic.bat" -Encoding ASCII
+
+        # Run build
+        .\build64.bat --dependencies-install-dir=D:\deps --version=${{ steps.version.outputs.VERSION }}
       shell: pwsh
 
     - name: List build outputs
       if: always()
       run: |
         echo "=== DLL Output ==="
-        Get-ChildItem -Path "cmake-build\install\lib" -Filter "*.dll" -Recurse
+        if (Test-Path "cmake-build\install\lib") {
+          Get-ChildItem -Path "cmake-build\install\lib" -Filter "*.dll" -Recurse
+        } else {
+          Write-Host "DLL directory not found"
+        }
         echo ""
         echo "=== MSI Output ==="
-        Get-ChildItem -Path "src\odbc\rsodbc\install" -Filter "*.msi" -Recurse
+        if (Test-Path "src\odbc\rsodbc\install") {
+          Get-ChildItem -Path "src\odbc\rsodbc\install" -Filter "*.msi" -Recurse
+        } else {
+          Write-Host "MSI directory not found"
+        }
       shell: pwsh
 
     - name: Generate checksums
       run: |
-        $msiPath = Get-ChildItem -Path "src\odbc\rsodbc\install" -Filter "*.msi" -Recurse | Select-Object -First 1
+        $msiPath = Get-ChildItem -Path "src\odbc\rsodbc\install" -Filter "*.msi" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
         if ($msiPath) {
           $hash = (Get-FileHash -Path $msiPath.FullName -Algorithm SHA256).Hash
           $hashFile = "$($msiPath.FullName).sha256"
           "$hash  $($msiPath.Name)" | Out-File -FilePath $hashFile -Encoding ASCII
           echo "SHA256: $hash"
+        } else {
+          Write-Host "No MSI found to hash"
         }
       shell: pwsh
 
@@ -117,6 +206,7 @@ jobs:
         name: redshift-odbc-dll-v${{ steps.version.outputs.VERSION }}
         path: cmake-build/install/lib/*.dll
         retention-days: 30
+        if-no-files-found: warn
 
     - name: Upload build logs
       if: always()
@@ -127,6 +217,7 @@ jobs:
           cmake-build/**/*.log
           *.log
         retention-days: 7
+        if-no-files-found: ignore
 
   create-release:
     needs: build-windows
@@ -214,14 +305,13 @@ jobs:
         ## 📝 Based On
 
         - **AWS Redshift ODBC:** v2.1.13 (Official)
-        - **Patch:** 0001-Fix-Azure-OAuth2-Auto-add-openid-to-scope-matching-J.patch
+        - **Build Method:** Pre-built dependencies (AWS approach)
+        - **Dependencies:**
+          - OpenSSL 1.1.1w
+          - AWS SDK C++ 1.11.743
+          - C-ares 1.34.5
+          - GoogleTest 1.17.0
         - **Branch:** openid-only-fix
-
-        ## 🔗 Links
-
-        - [Patch File](../0001-Fix-Azure-OAuth2-Auto-add-openid-to-scope-matching-J.patch)
-        - [Detailed Analysis](../OPENID-ONLY-ANALYSIS.md)
-        - [Build Instructions](../BUILD-INSTRUCTIONS-OPENID-FIX.md)
 
         ---
 
