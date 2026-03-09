@@ -37,13 +37,37 @@ jobs:
 
     - name: Setup NASM and Perl
       run: |
-        # NASM and Strawberry Perl are pre-installed on windows-2022
-        # Just verify they're available
-        Write-Host "Verifying NASM..."
-        nasm --version
+        Write-Host "Installing NASM..." -ForegroundColor Yellow
+        try {
+          choco install nasm -y --no-progress --limit-output
+          refreshenv
+          $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+          Write-Host "✓ NASM installed" -ForegroundColor Green
+        } catch {
+          Write-Host "⚠ NASM install failed, checking if already available..." -ForegroundColor Yellow
+        }
+
+        Write-Host "`nVerifying NASM..."
+        $nasmPath = (Get-Command nasm -ErrorAction SilentlyContinue).Source
+        if ($nasmPath) {
+          Write-Host "✓ NASM found: $nasmPath" -ForegroundColor Green
+          nasm --version
+        } else {
+          Write-Host "✗ NASM not found in PATH" -ForegroundColor Red
+          exit 1
+        }
 
         Write-Host "`nVerifying Perl..."
-        perl --version
+        $perlPath = (Get-Command perl -ErrorAction SilentlyContinue).Source
+        if ($perlPath) {
+          Write-Host "✓ Perl found: $perlPath" -ForegroundColor Green
+          perl --version | Select-String "This is perl"
+        } else {
+          Write-Host "Installing Strawberry Perl..." -ForegroundColor Yellow
+          choco install strawberryperl -y --no-progress --limit-output
+          refreshenv
+          perl --version | Select-String "This is perl"
+        }
       shell: pwsh
 
     - name: Setup dependencies cache
