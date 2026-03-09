@@ -1,0 +1,244 @@
+name: Build ODBC Driver - OPENID Fix
+
+on:
+  push:
+    branches: [ openid-only-fix ]
+  pull_request:
+    branches: [ openid-only-fix ]
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  build-windows:
+    runs-on: windows-2022
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        lfs: true
+        fetch-depth: 0
+
+    - name: Setup Git LFS
+      run: git lfs pull
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Setup CMake
+      uses: lukka/get-cmake@latest
+      with:
+        cmakeVersion: '~3.27.0'
+
+    - name: Setup WiX Toolset PATH
+      run: |
+        # WiX is pre-installed on windows-2022 runners
+        echo "C:\Program Files (x86)\WiX Toolset v3.14\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      shell: pwsh
+
+    - name: Install NASM
+      run: choco install nasm -y
+      shell: pwsh
+
+    - name: Install Perl
+      run: choco install strawberryperl -y
+      shell: pwsh
+
+    - name: Setup vcpkg cache
+      uses: actions/cache@v4
+      id: vcpkg-cache
+      with:
+        path: C:\vcpkg\installed\x64-windows
+        key: ${{ runner.os }}-vcpkg-openid-${{ hashFiles('**/vcpkg.json') }}
+        restore-keys: |
+          ${{ runner.os }}-vcpkg-openid-
+          ${{ runner.os }}-vcpkg-
+
+    - name: Setup vcpkg
+      uses: lukka/run-vcpkg@v11
+      with:
+        vcpkgGitCommitId: 'a42af01b72c28a8e1d7b48107b33e4f286a55ef6'
+
+    - name: Install dependencies with vcpkg
+      if: steps.vcpkg-cache.outputs.cache-hit != 'true'
+      run: |
+        vcpkg install `
+          openssl:x64-windows `
+          aws-sdk-cpp[core,redshift,sts,identity-management]:x64-windows `
+          c-ares:x64-windows `
+          gtest:x64-windows
+      shell: pwsh
+
+    - name: Read version
+      id: version
+      run: |
+        $version = (Get-Content version.txt).Trim()
+        echo "VERSION=$version" >> $env:GITHUB_OUTPUT
+      shell: pwsh
+
+    - name: Build ODBC Driver
+      run: |
+        $env:VCPKG_ROOT = "C:\vcpkg"
+        .\build64.bat --dependencies-install-dir=$env:VCPKG_ROOT\installed\x64-windows --version=${{ steps.version.outputs.VERSION }}
+      shell: pwsh
+
+    - name: List build outputs
+      if: always()
+      run: |
+        echo "=== DLL Output ==="
+        Get-ChildItem -Path "cmake-build\install\lib" -Filter "*.dll" -Recurse
+        echo ""
+        echo "=== MSI Output ==="
+        Get-ChildItem -Path "src\odbc\rsodbc\install" -Filter "*.msi" -Recurse
+      shell: pwsh
+
+    - name: Generate checksums
+      run: |
+        $msiPath = Get-ChildItem -Path "src\odbc\rsodbc\install" -Filter "*.msi" -Recurse | Select-Object -First 1
+        if ($msiPath) {
+          $hash = (Get-FileHash -Path $msiPath.FullName -Algorithm SHA256).Hash
+          $hashFile = "$($msiPath.FullName).sha256"
+          "$hash  $($msiPath.Name)" | Out-File -FilePath $hashFile -Encoding ASCII
+          echo "SHA256: $hash"
+        }
+      shell: pwsh
+
+    - name: Upload MSI Installer
+      uses: actions/upload-artifact@v4
+      with:
+        name: redshift-odbc-openid-fix-v${{ steps.version.outputs.VERSION }}
+        path: |
+          src/odbc/rsodbc/install/*.msi
+          src/odbc/rsodbc/install/*.msi.sha256
+        retention-days: 90
+
+    - name: Upload DLL
+      uses: actions/upload-artifact@v4
+      with:
+        name: redshift-odbc-dll-v${{ steps.version.outputs.VERSION }}
+        path: cmake-build/install/lib/*.dll
+        retention-days: 30
+
+    - name: Upload build logs
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-logs
+        path: |
+          cmake-build/**/*.log
+          *.log
+        retention-days: 7
+
+  create-release:
+    needs: build-windows
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/openid-only-fix'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Read version
+      id: version
+      run: |
+        VERSION=$(cat version.txt | tr -d ' ')
+        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: redshift-odbc-openid-fix-v${{ steps.version.outputs.VERSION }}
+        path: ./artifacts
+
+    - name: Create Release Notes
+      run: |
+        cat > RELEASE_NOTES.md << 'EOF'
+        # Amazon Redshift ODBC Driver - OPENID Fix v${{ steps.version.outputs.VERSION }}
+
+        ## 🎯 What's Fixed
+
+        This release contains a **single, isolated fix**: Auto-add `openid` scope in Azure OAuth2 authentication.
+
+        ### The Issue
+        When using Browser Azure AD OAuth2 authentication, the driver was not automatically adding the `openid` scope, causing authentication failures:
+        ```
+        AADSTS65001: The user or administrator has not consented to use the application
+        ```
+
+        ### The Fix
+        - ✅ Automatically adds `openid` to scope if not already present
+        - ✅ Smart detection prevents duplication
+        - ✅ Matches JDBC driver behavior
+        - ✅ Improved debug logging
+
+        ## 📦 What's Included
+
+        - `AmazonRedshiftODBC64_${{ steps.version.outputs.VERSION }}.msi` - MSI Installer
+        - `AmazonRedshiftODBC64_${{ steps.version.outputs.VERSION }}.msi.sha256` - Checksum
+
+        ## 🔧 Installation
+
+        1. Download the MSI file
+        2. Verify checksum (optional)
+        3. Run: `msiexec /i AmazonRedshiftODBC64_${{ steps.version.outputs.VERSION }}.msi`
+        4. Configure ODBC DSN with Azure OAuth2
+        5. Test connection
+
+        ## ✅ Usage
+
+        **You no longer need to specify `openid` in the scope!**
+
+        ```ini
+        # ✅ This works now (openid added automatically)
+        scope=api://YOUR-APP-ID/jdbc_login
+
+        # ✅ This also works (no duplication)
+        scope=openid api://YOUR-APP-ID/jdbc_login
+        ```
+
+        ## 📊 Changes
+
+        - **Files changed:** 1
+        - **Lines added:** 24
+        - **Lines removed:** 2
+        - **Backward compatible:** 100%
+        - **Breaking changes:** 0
+
+        ## 🔍 Verification
+
+        Enable logging and check for:
+        ```
+        [DEBUG] RequestAuthorizationCode: Added 'openid' to scope
+        [DEBUG] Added 'openid' prefix to scope. Final scope: openid api://...
+        ```
+
+        ## 📝 Based On
+
+        - **AWS Redshift ODBC:** v2.1.13 (Official)
+        - **Patch:** 0001-Fix-Azure-OAuth2-Auto-add-openid-to-scope-matching-J.patch
+        - **Branch:** openid-only-fix
+
+        ## 🔗 Links
+
+        - [Patch File](../0001-Fix-Azure-OAuth2-Auto-add-openid-to-scope-matching-J.patch)
+        - [Detailed Analysis](../OPENID-ONLY-ANALYSIS.md)
+        - [Build Instructions](../BUILD-INSTRUCTIONS-OPENID-FIX.md)
+
+        ---
+
+        **Built with GitHub Actions**
+        **Date:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+        EOF
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ steps.version.outputs.VERSION }}-openid-fix
+        name: ODBC Driver v${{ steps.version.outputs.VERSION }} - OPENID Fix
+        body_path: RELEASE_NOTES.md
+        files: |
+          artifacts/*.msi
+          artifacts/*.sha256
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
