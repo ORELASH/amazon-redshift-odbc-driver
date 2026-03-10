@@ -193,8 +193,8 @@ jobs:
           -DCMAKE_BUILD_TYPE=Release `
           -DCMAKE_INSTALL_PREFIX=$installDir `
           -DRS_OPENSSL_DIR="D:\deps\openssl" `
-          -DRS_MULTI_DEPS_DIRS="D:\deps;D:\deps\build\aws-sdk-cpp" `
-          -DRS_DEPS_DIRS=".\src\pgclient\kfw-3-2-2-final;D:\deps;D:\deps\build\aws-sdk-cpp" `
+          "-DRS_MULTI_DEPS_DIRS=D:\deps`;D:\deps\build\aws-sdk-cpp" `
+          "-DRS_DEPS_DIRS=.\src\pgclient\kfw-3-2-2-final`;D:\deps`;D:\deps\build\aws-sdk-cpp" `
           -DODBC_VERSION="${{ steps.version.outputs.VERSION }}" `
           -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 
