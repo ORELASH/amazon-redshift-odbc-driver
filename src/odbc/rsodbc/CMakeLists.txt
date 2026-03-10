@@ -94,7 +94,8 @@ endforeach()
 
 
 add_subdirectory(rsodbcsql)
-add_subdirectory(samples/connect)
+# Disabled sample build - causes linker errors in CI
+# add_subdirectory(samples/connect)
 
 if (WIN32)
     add_subdirectory(rsodbc_setup)
