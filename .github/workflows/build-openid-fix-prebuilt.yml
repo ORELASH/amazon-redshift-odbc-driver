@@ -99,7 +99,7 @@ jobs:
 
         # Download and build AWS SDK C++
         Write-Host "Downloading AWS SDK C++..."
-        git clone --depth 1 --branch 1.11.743 https://github.com/aws/aws-sdk-cpp.git D:\deps\build\aws-sdk-cpp
+        git clone --recurse-submodules --depth 1 --branch 1.11.743 https://github.com/aws/aws-sdk-cpp.git D:\deps\build\aws-sdk-cpp
 
         New-Item -ItemType Directory -Force -Path "D:\deps\build\aws-sdk-cpp-build"
         cd D:\deps\build\aws-sdk-cpp-build
@@ -193,8 +193,8 @@ jobs:
           -DCMAKE_BUILD_TYPE=Release `
           -DCMAKE_INSTALL_PREFIX=$installDir `
           -DRS_OPENSSL_DIR="D:\deps\openssl" `
-          "-DRS_MULTI_DEPS_DIRS=D:\deps`;D:\deps\build\aws-sdk-cpp" `
-          "-DRS_DEPS_DIRS=.\src\pgclient\kfw-3-2-2-final`;D:\deps`;D:\deps\build\aws-sdk-cpp" `
+          "-DRS_MULTI_DEPS_DIRS=D:\deps`;D:\deps\aws-sdk-cpp" `
+          "-DRS_DEPS_DIRS=.\src\pgclient\kfw-3-2-2-final`;D:\deps`;D:\deps\aws-sdk-cpp" `
           -DODBC_VERSION="${{ steps.version.outputs.VERSION }}" `
           -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
 
