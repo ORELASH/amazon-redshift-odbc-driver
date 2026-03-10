@@ -230,26 +230,7 @@ jobs:
         }
 
         Write-Host "`n✓ Build completed successfully!" -ForegroundColor Green
-      shell: pwsh
-
-    - name: Create MSI Installer
-      run: |
-        Write-Host "=== Creating MSI Installer ===" -ForegroundColor Cyan
-
-        # Set environment variables and run package script via cmd
-        cmd /c "set DEPENDENCIES_INSTALL_DIR=D:\deps && set RS_BUILD_TYPE= && package64.bat"
-
-        if ($LASTEXITCODE -ne 0) {
-          Write-Host "⚠ Package script returned error, but continuing..." -ForegroundColor Yellow
-        }
-
-        # Check if MSI was created
-        $msi = Get-ChildItem -Path "src\odbc\rsodbc\install" -Filter "*.msi" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($msi) {
-          Write-Host "✓ MSI created: $($msi.FullName)" -ForegroundColor Green
-        } else {
-          Write-Host "⚠ MSI not found, checking if it needs manual build..." -ForegroundColor Yellow
-        }
+        Write-Host "`nNote: MSI installer is created automatically by the INSTALL target" -ForegroundColor Cyan
       shell: pwsh
 
     - name: List build outputs
