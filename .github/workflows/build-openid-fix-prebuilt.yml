@@ -75,9 +75,9 @@ jobs:
           D:\deps\c-ares
           D:\deps\googletest
           D:\deps\build\aws-sdk-cpp
-        key: ${{ runner.os }}-redshift-deps-v5-${{ hashFiles('.github/workflows/build-openid-fix-prebuilt.yml') }}
+        key: ${{ runner.os }}-redshift-deps-v6-${{ hashFiles('.github/workflows/build-openid-fix-prebuilt.yml') }}
         restore-keys: |
-          ${{ runner.os }}-redshift-deps-v5-
+          ${{ runner.os }}-redshift-deps-v6-
 
     - name: Download and build dependencies
       if: steps.deps-cache.outputs.cache-hit != 'true'
@@ -106,7 +106,7 @@ jobs:
         cmake -G "Visual Studio 17 2022" -A x64 `
           -DCMAKE_BUILD_TYPE=Release `
           -DCMAKE_INSTALL_PREFIX="D:\deps\aws-sdk-cpp" `
-          -DBUILD_ONLY="core;redshift;sts;identity-management;sso-oidc" `
+          -DBUILD_ONLY="core;redshift;sts;identity-management;sso-oidc;redshift-serverless" `
           -DENABLE_TESTING=OFF `
           -DBUILD_SHARED_LIBS=OFF `
           -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded `
