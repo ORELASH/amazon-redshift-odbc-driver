@@ -236,12 +236,8 @@ jobs:
       run: |
         Write-Host "=== Creating MSI Installer ===" -ForegroundColor Cyan
 
-        # Set environment variables for WiX packaging
-        $env:DEPENDENCIES_INSTALL_DIR = "D:\deps"
-        $env:RS_BUILD_TYPE = ""
-
-        # Run package script
-        .\package64.bat
+        # Set environment variables and run package script via cmd
+        cmd /c "set DEPENDENCIES_INSTALL_DIR=D:\deps && set RS_BUILD_TYPE= && package64.bat"
 
         if ($LASTEXITCODE -ne 0) {
           Write-Host "⚠ Package script returned error, but continuing..." -ForegroundColor Yellow
