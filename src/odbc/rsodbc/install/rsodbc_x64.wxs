@@ -77,11 +77,7 @@
         <Component Id="rsodbc_samples.files" Guid="E7E557CF-0531-4ec5-9C4E-7431722B1338" Win64="yes">
           <File Id="connect.c" Name="connect.c" Source="$(var.ProjectDir)/src/odbc/rsodbc/samples/connect/connect.c" />
           <File Id="connect.rc" Name="connect.rc" Source="$(var.ProjectDir)/src/odbc/rsodbc/samples/connect/connect.rc" />
-          <File Id="resource.h" Name="resource.h" Source="$(var.ProjectDir)/src/odbc/rsodbc/samples/connect/resource.h" />
-          <File Id="redshift.ico" Name="resdhfit.ico" Source="$(var.ProjectDir)/src/odbc/rsodbc/samples/connect/redshift.ico" />
-          <File Id="connect.sln" Name="connect.sln" Source="$(var.ProjectDir)/src/odbc/rsodbc/samples/connect/connect.sln" />
-          <File Id="connect.vcproj" Name="connect.vcproj" Source="$(var.ProjectDir)/src/odbc/rsodbc/samples/connect/connect.vcxproj" />
-          <File Id="connect.exe" Name="connect.exe" Source="$(var.ProjectDir)/cmake-build/install/connect.exe" />
+          <!-- Removed connect sample files - sample build disabled in CMakeLists.txt -->
 	</Component>
      </DirectoryRef>
     
