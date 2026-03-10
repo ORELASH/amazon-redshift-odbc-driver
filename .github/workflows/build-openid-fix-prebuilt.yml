@@ -75,9 +75,9 @@ jobs:
           D:\deps\c-ares
           D:\deps\googletest
           D:\deps\build\aws-sdk-cpp
-        key: ${{ runner.os }}-redshift-deps-v6-${{ hashFiles('.github/workflows/build-openid-fix-prebuilt.yml') }}
+        key: ${{ runner.os }}-redshift-deps-v7-${{ hashFiles('.github/workflows/build-openid-fix-prebuilt.yml') }}
         restore-keys: |
-          ${{ runner.os }}-redshift-deps-v6-
+          ${{ runner.os }}-redshift-deps-v7-
 
     - name: Download and build dependencies
       if: steps.deps-cache.outputs.cache-hit != 'true'
