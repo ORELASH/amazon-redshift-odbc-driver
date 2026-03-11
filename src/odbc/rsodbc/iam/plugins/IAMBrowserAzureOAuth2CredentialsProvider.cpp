@@ -245,16 +245,9 @@ rs_string IAMBrowserAzureOAuth2CredentialsProvider::RequestAuthorizationCode()
 
 		RS_LOG_DEBUG("IAMCRD", "RequestAuthorizationCode: Server is listening on port: %d", port);
 
-		// Build scope with URL encoding - add 'openid' if not present
-		rs_string scopeParam = m_argsMap[IAM_KEY_SCOPE];
-		rs_string scope;
-		if (scopeParam.find("openid") == rs_string::npos) {
-			scope = "openid%20" + scopeParam;
-			RS_LOG_DEBUG("IAMCRD", "RequestAuthorizationCode: Added 'openid' to scope");
-		} else {
-			scope = scopeParam;
-			RS_LOG_DEBUG("IAMCRD", "RequestAuthorizationCode: Scope already contains 'openid'");
-		}
+		// Use scope directly without modification (for OpenSSL 3.x testing)
+		rs_string scope = m_argsMap[IAM_KEY_SCOPE];
+		RS_LOG_DEBUG("IAMCRD", "RequestAuthorizationCode: Using scope as-is: %s", scope.c_str());
 
 		/* Generate URI to request an authorization code.  */
 		rs_string idpHostUrl;
