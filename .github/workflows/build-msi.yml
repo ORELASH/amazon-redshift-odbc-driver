@@ -2,7 +2,7 @@ name: Build Redshift ODBC MSI
 
 on:
   push:
-    branches: [ main, master, fix-auth-cancel, fix-azure-oauth-scope ]
+    branches: [ main, master, fix-auth-cancel, fix-azure-oauth-scope, v2.1.13.6-openssl3-only ]
     tags:
       - 'v*'
   pull_request:
