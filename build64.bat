@@ -99,6 +99,7 @@ if "!VS_PATH!"=="" (
     rem List of paths to check
     set "vs_path_candidates=!vs_path_candidates!C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools;"
     set "vs_path_candidates=!vs_path_candidates!C:\Program Files (x86)\Microsoft Visual Studio\2022\Community;"
+    set "vs_path_candidates=!vs_path_candidates!C:\Program Files\Microsoft Visual Studio\2022\Enterprise;"
     set "vs_path_candidates=!vs_path_candidates!C:\Program Files\Microsoft Visual Studio\2022\BuildTools;"
     set "vs_path_candidates=!vs_path_candidates!C:\Program Files\Microsoft Visual Studio\2022\Community"
     rem Loop through paths and find the first valid one
