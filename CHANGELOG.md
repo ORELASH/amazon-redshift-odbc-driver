@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v2.1.14.1 (2026-03-12)
+---------------------
+1. Upgraded OpenSSL from version 1.1.1 to 3.3.2 to support Azure OAuth2 authentication with AWS Identity Center
+
 v2.1.14 (2026-03-09)
 ---------------------
 1. Added logging of connection options and parameter status messages from the server to help diagnose connection issues and provide visibility into server-side configuration
