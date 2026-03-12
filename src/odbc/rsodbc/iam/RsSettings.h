@@ -138,6 +138,7 @@ struct RsSettings
 	bool		  m_groupFederation;
     bool          m_isCname;
     bool          m_isServerless;
+    bool          m_allowPrompt;  // FALSE when SQL_DRIVER_NOPROMPT is set
 
     RsSettings() :
         m_port(0),
@@ -160,7 +161,8 @@ struct RsSettings
 		m_stsConnectionTimeout(0),
 		m_groupFederation(false),
         m_isCname(false),
-        m_isServerless(false)
+        m_isServerless(false),
+        m_allowPrompt(true)  // Default to TRUE - allowing prompts
     {
         /* Do nothing */
     }

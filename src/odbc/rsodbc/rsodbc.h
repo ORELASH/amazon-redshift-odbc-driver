@@ -310,6 +310,7 @@ public:
       iStatus = RS_CLOSE_CONNECTION;
       iBrowseIteration = 0;
       iInternal = FALSE;
+      iAllowPrompt = TRUE;
       phstmtHead = NULL;
       pErrorList = NULL;
       pCmdBuf = NULL;
@@ -334,6 +335,7 @@ public:
     int iStatus; // Open, Close.
     int iBrowseIteration;
     int iInternal; // 0 means external, 1 means calls internally
+    int iAllowPrompt; // FALSE when SQL_DRIVER_NOPROMPT is set
 
     // List of statements
     RS_STMT_INFO *phstmtHead;

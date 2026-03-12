@@ -1014,6 +1014,7 @@ IAMConfiguration RsIamClient::CreateIAMConfiguration(const rs_string& in_authTyp
 	config.SetEndpointUrl(IAMUtils::convertToUTF8(m_settings.m_endpointUrl));
 	config.SetAuthProfile(m_settings.m_authProfile);
 	config.SetStsConnectionTimeout(m_settings.m_stsConnectionTimeout * 1000);
+	config.SetAllowPrompt(m_settings.m_allowPrompt);
 
     /* Username and password for Profile and Plugin */
     config.SetUser(m_settings.m_username);

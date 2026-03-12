@@ -645,8 +645,12 @@ SQLRETURN SQL_API RS_CONN_INFO::RS_SQLDriverConnect(SQLHDBC            phdbc,
         pConn->parseConnectString((char *)szConnStrIn, cbConnStrIn, TRUE , FALSE);
         initTraceFromConnectionString(pConn->pConnectProps);
 
-        if(hDriverCompletion == SQL_DRIVER_NOPROMPT) 
+        if(hDriverCompletion == SQL_DRIVER_NOPROMPT)
+        {
             iPrompt = FALSE;
+            pConn->iAllowPrompt = FALSE;  // Indicate that user prompting is not allowed
+            pConn->iamSettings.m_allowPrompt = false;  // Pass NOPROMPT flag to IAM settings
+        }
         else 
         {
             if(pConnectProps->szPort[0] == '\0' || pConnectProps->szDatabase[0] == '\0')

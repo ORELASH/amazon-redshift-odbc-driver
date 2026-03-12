@@ -544,6 +544,16 @@ namespace IamSupport
         /// @param in_isServerless     IsServerless flag of the IAMConfiguration
         void SetIsServerless(bool in_isServerless);
 
+        /// @brief Returns the AllowPrompt flag of the IAMConfiguration
+        ///
+        /// @return AllowPrompt flag of the IAMConfiguration
+        bool GetAllowPrompt() const;
+
+        /// @brief Sets the AllowPrompt flag of the IAMConfiguration
+        ///
+        /// @param in_allowPrompt      AllowPrompt flag - false when SQL_DRIVER_NOPROMPT is set
+        void SetAllowPrompt(bool in_allowPrompt);
+
         /// @brief Destructor.
         ~IAMConfiguration();
 
@@ -570,6 +580,9 @@ namespace IamSupport
 
         /* Flag to indicate serverless mode */
         bool m_isServerless = false;
+
+        /* Flag to indicate if user prompting is allowed (false when SQL_DRIVER_NOPROMPT) */
+        bool m_allowPrompt = true;
     };
 }
 }

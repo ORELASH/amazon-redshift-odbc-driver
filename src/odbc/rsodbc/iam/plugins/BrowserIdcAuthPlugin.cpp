@@ -309,6 +309,14 @@ std::string BrowserIdcAuthPlugin::GenerateCodeChallenge(const std::string& codeV
 std::string BrowserIdcAuthPlugin::FetchAuthorizationCode(
     const std::string& codeChallenge,
     RegisterClientResult& registerClientResult) {
+    // Check if user prompting is allowed (SQL_DRIVER_NOPROMPT was not set)
+    if (!m_config.GetAllowPrompt()) {
+        RS_LOG_ERROR("IAMIDC", "Browser authentication requires user interaction but SQL_DRIVER_NOPROMPT was specified");
+        IAMUtils::ThrowConnectionExceptionWithInfo(
+            "Browser-based authentication cannot be used with SQL_DRIVER_NOPROMPT. "
+            "Either use a different authentication method or allow user prompting.");
+    }
+
     //  Generate state to include in URI to prevent the cross-site request forgery attacks.
 	std::string state = GenerateState();
 
