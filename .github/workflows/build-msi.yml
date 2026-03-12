@@ -126,6 +126,7 @@ jobs:
         set "RS_MULTI_DEPS_DIRS=%VCPKG_INSTALL_DIR%"
         set "OPENSSL_ROOT_DIR=%VCPKG_INSTALL_DIR%"
         set "CMAKE_PREFIX_PATH=%VCPKG_INSTALL_DIR%"
+        set "PATH=C:\Program Files (x86)\WiX Toolset v3.11\bin;%PATH%"
         build64.bat --dependencies-install-dir=%VCPKG_INSTALL_DIR% --version=${{ steps.version.outputs.VERSION }}
 
     - name: Find MSI file
