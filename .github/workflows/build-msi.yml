@@ -61,6 +61,20 @@ jobs:
           restore-keys: |
             vcpkg-${{ runner.os }}-
 
+      - name: Download and Install OpenSSL 3.3.2
+        shell: pwsh
+        run: |
+          Write-Host "Downloading OpenSSL 3.3.2..."
+          $openssl_url = "https://slproweb.com/download/Win64OpenSSL-3_3_2.exe"
+          $openssl_installer = "$env:TEMP\Win64OpenSSL-3_3_2.exe"
+
+          Invoke-WebRequest -Uri $openssl_url -OutFile $openssl_installer
+
+          Write-Host "Installing OpenSSL 3.3.2..."
+          Start-Process -FilePath $openssl_installer -ArgumentList "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /DIR=C:\OpenSSL-Win64" -Wait
+
+          Write-Host "OpenSSL 3.3.2 installed successfully"
+
       - name: Install dependencies with vcpkg (with retries)
         shell: pwsh
         run: |
@@ -68,12 +82,11 @@ jobs:
           $retryCount = 0
           $success = $false
 
-          # Install OpenSSL 3.3.2 and other dependencies
+          # Install AWS SDK and other dependencies (excluding OpenSSL)
           $packages = @(
-            "openssl:x64-windows",
             "aws-sdk-cpp[core,redshift,redshift-serverless,sts,sso-oidc]:x64-windows",
             "zlib:x64-windows",
-            "curl:x64-windows"
+            "curl[ssl]:x64-windows"
           )
 
           while (-not $success -and $retryCount -lt $maxRetries) {
@@ -104,26 +117,28 @@ jobs:
             }
           }
 
-      - name: Verify vcpkg installation
+      - name: Verify OpenSSL and vcpkg installation
         shell: pwsh
         run: |
-          $vcpkgInstalled = "$env:VCPKG_ROOT\installed\x64-windows"
-          Write-Host "Checking vcpkg installation at: $vcpkgInstalled"
-
-          if (Test-Path "$vcpkgInstalled\include\openssl\ssl.h") {
+          Write-Host "Checking OpenSSL 3.3.2 installation..."
+          if (Test-Path "C:\OpenSSL-Win64\include\openssl\ssl.h") {
             Write-Host "OpenSSL headers found"
-            Get-Content "$vcpkgInstalled\include\openssl\opensslv.h" | Select-String "OPENSSL_VERSION_TEXT"
+            Get-Content "C:\OpenSSL-Win64\include\openssl\opensslv.h" | Select-String "OPENSSL_VERSION_TEXT"
           } else {
             Write-Error "OpenSSL headers not found!"
             exit 1
           }
 
-          if (Test-Path "$vcpkgInstalled\lib\libssl.lib") {
+          if (Test-Path "C:\OpenSSL-Win64\lib\libssl.lib") {
             Write-Host "OpenSSL libraries found"
           } else {
             Write-Error "OpenSSL libraries not found!"
             exit 1
           }
+
+          Write-Host "Checking vcpkg packages..."
+          $vcpkgInstalled = "$env:VCPKG_ROOT\installed\x64-windows"
+          Write-Host "vcpkg installation at: $vcpkgInstalled"
 
       - name: Get driver version
         id: version
@@ -134,14 +149,20 @@ jobs:
           echo "VERSION=$version" >> $env:GITHUB_OUTPUT
           Write-Host "Driver version: $version"
 
+      - name: Setup build environment
+        shell: cmd
+        run: |
+          mkdir C:\BuildDeps\Release
+          xcopy /E /I /Y "C:\OpenSSL-Win64\*" "C:\BuildDeps\Release\openssl\"
+          xcopy /E /I /Y "%VCPKG_ROOT%\installed\x64-windows\*" "C:\BuildDeps\Release\"
+
       - name: Build ODBC Driver with MSI
         shell: cmd
         run: |
-          set "VCPKG_INSTALL_DIR=%VCPKG_ROOT%\installed\x64-windows"
           call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
 
-          echo Building driver with OpenSSL from vcpkg...
-          build64.bat --dependencies-install-dir=%VCPKG_INSTALL_DIR% --version=${{ steps.version.outputs.VERSION }}
+          echo Building driver with OpenSSL 3.3.2...
+          build64.bat --dependencies-install-dir=C:\BuildDeps --version=${{ steps.version.outputs.VERSION }}
 
       - name: Find MSI file
         id: find_msi
