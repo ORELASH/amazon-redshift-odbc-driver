@@ -61,19 +61,19 @@ jobs:
           restore-keys: |
             vcpkg-${{ runner.os }}-
 
-      - name: Download and Install OpenSSL 3.3.2
+      - name: Download and Install OpenSSL 3.3.6
         shell: pwsh
         run: |
-          Write-Host "Downloading OpenSSL 3.3.2..."
-          $openssl_url = "https://slproweb.com/download/Win64OpenSSL-3_3_2.exe"
-          $openssl_installer = "$env:TEMP\Win64OpenSSL-3_3_2.exe"
+          Write-Host "Downloading OpenSSL 3.3.6..."
+          $openssl_url = "https://slproweb.com/download/Win64OpenSSL-3_3_6.exe"
+          $openssl_installer = "$env:TEMP\Win64OpenSSL-3_3_6.exe"
 
           Invoke-WebRequest -Uri $openssl_url -OutFile $openssl_installer
 
-          Write-Host "Installing OpenSSL 3.3.2..."
+          Write-Host "Installing OpenSSL 3.3.6..."
           Start-Process -FilePath $openssl_installer -ArgumentList "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /DIR=C:\OpenSSL-Win64" -Wait
 
-          Write-Host "OpenSSL 3.3.2 installed successfully"
+          Write-Host "OpenSSL 3.3.6 installed successfully"
 
       - name: Install dependencies with vcpkg (with retries)
         shell: pwsh
