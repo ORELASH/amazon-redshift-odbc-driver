@@ -235,6 +235,9 @@ if defined ENABLE_TESTING (
     set "cmake_command=!cmake_command! -DENABLE_TESTING=%ENABLE_TESTING%"
 )
 
+@REM Disable test build directory to avoid GTest dependency
+set "cmake_command=!cmake_command! -DENABLE_TEST_BUILD=OFF"
+
 echo "RSODBC CMAKE COMMAND: %cmake_command%"
 call %cmake_command%
 if %ERRORLEVEL% neq 0 (
