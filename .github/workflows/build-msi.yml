@@ -120,7 +120,7 @@ jobs:
       - name: Verify OpenSSL and vcpkg installation
         shell: pwsh
         run: |
-          Write-Host "Checking OpenSSL 3.3.2 installation..."
+          Write-Host "Checking OpenSSL 3.3.6 installation..."
           if (Test-Path "C:\OpenSSL-Win64\include\openssl\ssl.h") {
             Write-Host "OpenSSL headers found"
             Get-Content "C:\OpenSSL-Win64\include\openssl\opensslv.h" | Select-String "OPENSSL_VERSION_TEXT"
@@ -129,8 +129,11 @@ jobs:
             exit 1
           }
 
-          if (Test-Path "C:\OpenSSL-Win64\lib\libssl.lib") {
-            Write-Host "OpenSSL libraries found"
+          # Check for OpenSSL libraries - slproweb builds use lib\VC\x64 directory
+          if (Test-Path "C:\OpenSSL-Win64\lib\VC\x64\MD\libssl.lib") {
+            Write-Host "OpenSSL libraries found in lib\VC\x64\MD\"
+          } elseif (Test-Path "C:\OpenSSL-Win64\lib\libssl.lib") {
+            Write-Host "OpenSSL libraries found in lib\"
           } else {
             Write-Error "OpenSSL libraries not found!"
             exit 1
@@ -161,7 +164,7 @@ jobs:
         run: |
           call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
 
-          echo Building driver with OpenSSL 3.3.2...
+          echo Building driver with OpenSSL 3.3.6...
           build64.bat --dependencies-install-dir=C:\BuildDeps --version=${{ steps.version.outputs.VERSION }}
 
       - name: Find MSI file
@@ -201,7 +204,7 @@ jobs:
           body: |
             ## Redshift ODBC Driver ${{ steps.version.outputs.VERSION }}
 
-            **OpenSSL Version:** 3.3.2
+            **OpenSSL Version:** 3.3.6
 
             ### Changes
             See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md)
