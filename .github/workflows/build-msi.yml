@@ -155,9 +155,9 @@ jobs:
       - name: Setup build environment
         shell: cmd
         run: |
-          mkdir C:\BuildDeps\Release
-          xcopy /E /I /Y "C:\OpenSSL-Win64\*" "C:\BuildDeps\Release\openssl\"
-          xcopy /E /I /Y "%VCPKG_ROOT%\installed\x64-windows\*" "C:\BuildDeps\Release\"
+          mkdir C:\BuildDeps\openssl\Release
+          xcopy /E /I /Y "C:\OpenSSL-Win64\*" "C:\BuildDeps\openssl\Release\"
+          xcopy /E /I /Y "%VCPKG_ROOT%\installed\x64-windows\*" "C:\BuildDeps\"
 
       - name: Build ODBC Driver with MSI
         shell: cmd
