@@ -134,6 +134,12 @@ function(target_link_libraries_rsodbc TARGET_NAME)
            pq
            pqport
           #  rslog
+           gssapi_krb5
+           krb5
+           k5crypto
+           krb5support
+           com_err
+           ssh
            pthread
            resolv
            keyutils

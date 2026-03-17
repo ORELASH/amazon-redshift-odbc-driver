@@ -1,2 +1,10 @@
 
 .gitchangelog.rc
+
+# Build directories
+cmake-build/
+build/
+
+# Generated config files
+src/pgclient/src/include/pg_config.h
+src/pgclient/src/include/pg_config_os.h
